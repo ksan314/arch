@@ -79,7 +79,7 @@ pacman -S --needed --noconfirm arch-wiki-docs arch-wiki-lite base base-devel bas
 # install tools
 printf "\e[1;32m\nInstalling tools\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm bat fzf git gnupg hwinfo inotify-tools libqalculate lshw nano neofetch neovim zoxide
+pacman -S --needed --noconfirm bat btop fzf git gnupg hwinfo inotify-tools libqalculate lshw nano neofetch neovim zoxide
 
 
 # install necessary packages
