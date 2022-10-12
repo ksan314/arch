@@ -73,7 +73,7 @@ fi
 # install essential packages
 printf "\e[1;32m\nInstalling essential packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli ufw unzip zip
+pacman -S --needed --noconfirm arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils firewalld grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli unzip zip
 
 
 # install tools
