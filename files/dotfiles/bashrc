@@ -17,7 +17,7 @@ alias ip='ip -color=auto'
 alias ls='ls --color=auto'
 alias pactree='pactree --color'
 alias sudo='sudo '
-alias info='pinfo'
+#alias info='pinfo'
 export MANPAGER="less -R --use-color -Dd+g -Du+b -Ds+r -DS+r -DP+r -DE+r"
 
 
