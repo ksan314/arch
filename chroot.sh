@@ -38,7 +38,7 @@ printf "\e[1;32m\nConfiguring pacman\n\e[0m"
 sleep 2
 sed -i 's/#\[multilib\]/\[multilib\]/;/\[multilib\]/{n;s/#Include /Include /}' /etc/pacman.conf
 pacman -Syu
-pacman -S --needed --asdeps --noconfirm pacman-contrib pacutils
+pacman -S --needed --asdeps pacman-contrib pacutils
 
 
 # enable microcode updates
@@ -46,7 +46,7 @@ if [ "$processorVendor" != null ]
 then
     printf "\e[1;32m\nEnabling microcode updates\n\e[0m"
     sleep 2
-    pacman -S --needed --noconfirm "$processorVendor"-ucode
+    pacman -S --needed "$processorVendor"-ucode
 fi
 
 
@@ -58,7 +58,7 @@ then
 fi
 if [ "$graphicsVendor" == amd ]
 then
-    pacman -S --needed --noconfirm mesa lib32-mesa lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau vulkan-radeon xf86-video-amdgpu
+    pacman -S --needed mesa lib32-mesa lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau vulkan-radeon xf86-video-amdgpu
 fi
 if [ "$graphicsVendor" == intel ]
 then
@@ -73,43 +73,43 @@ fi
 # install essential packages
 printf "\e[1;32m\nInstalling essential packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils firewalld grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli unzip zip
+pacman -S --needed arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils firewalld grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli unzip zip
 
 
 # install tools
 printf "\e[1;32m\nInstalling tools\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm bat firewalld fzf git gnupg hwinfo inotify-tools lshw nano neovim zoxide
+pacman -S --needed bat firewalld fzf git gnupg hwinfo inotify-tools lshw nano neovim zoxide
 
 
 # install necessary packages
 printf "\e[1;32m\nInstalling necessary packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
+pacman -S --needed archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
 
 
 # install desktop packages
 printf "\e[1;32m\nInstalling desktop packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm alacritty foot mako seatd sway swaybg swaylock swayidle waybar wayland wayland-docs wayland-utils wlc wl-clipboard xorg-xwayland
+pacman -S --needed alacritty foot mako seatd sway swaybg swaylock swayidle waybar wayland wayland-docs wayland-utils wlc wl-clipboard xorg-xwayland
 
 
 # install audio packages
 printf "\e[1;32m\nInstalling audio packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm pavucontrol pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-pulse wireplumber wireplumber-docs
+pacman -S --needed pavucontrol pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-pulse wireplumber wireplumber-docs
 
 
 # install bluetooth packages
 printf "\e[1;32m\nInstalling bluetooth packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm blueman bluez bluez-utils
+pacman -S --needed blueman bluez bluez-utils
 
 
 # install printing packages
 printf "\e[1;32m\nInstalling printing packages\n\e[0m"
 sleep 2
-pacman -S --needed --noconfirm system-config-printer
+pacman -S --needed system-config-printer
 
 
 
@@ -121,7 +121,7 @@ pacman -S --needed --noconfirm system-config-printer
 # grub
 printf "\e[1;32m\nInstalling optional dependencies for grub\n\e[0m"
 sleep 2
-pacman -S --needed --asdeps --noconfirm efibootmgr os-prober
+pacman -S --needed --asdeps efibootmgr os-prober
 # set as dependencies
 package=grub
 dependsOn=("efibootmgr" "os-prober")
@@ -139,7 +139,7 @@ done
 # printing
 printf "\e[1;32m\nInstalling optional dependencies for printing\n\e[0m"
 sleep 2
-pacman -S --needed --asdeps --noconfirm avahi cups cups-pdf foomatic-db-ppds foomatic-db-nonfree-ppds nss-mdns usbutils
+pacman -S --needed --asdeps avahi cups cups-pdf foomatic-db-ppds foomatic-db-nonfree-ppds nss-mdns usbutils
 # set as dependencies
 package=system-config-printer
 dependsOn=("avahi" "cups" "cups-pdf" "nss-mdns" "usbutils")
