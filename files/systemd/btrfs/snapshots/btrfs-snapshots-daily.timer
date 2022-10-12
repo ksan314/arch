@@ -1,0 +1,10 @@
+[Unit]
+Description=takes daily btrfs snapshots of root and home directories
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+AccuracySec=3hours
+
+[Install]
+WantedBy=multi-user.target

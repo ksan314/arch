@@ -1,0 +1,10 @@
+[Unit]
+Description=scans files and directories for malware via ClamAV
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+AccuracySec=3hours
+
+[Install]
+WantedBy=multi-user.target

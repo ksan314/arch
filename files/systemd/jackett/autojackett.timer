@@ -1,0 +1,10 @@
+[Unit]
+Description=runs a small script that starts or stops jackett depending on if qBittorrent is running
+
+[Timer]
+OnCalendar=minutely
+Persistent=false
+AccuracySec=1second
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,59 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
+# colored bash prompt
+export PS1="\[\e[34m\][\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[34m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[31m\]\W\[\e[m\]\[\e[34m\]]\[\e[m\]\[\e[31m\]\\$\[\e[m\] "
+
+
+# enables color
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+alias ls='ls --color=auto'
+alias pactree='pactree --color'
+alias sudo='sudo '
+alias info='pinfo'
+export MANPAGER="less -R --use-color -Dd+g -Du+b -Ds+r -DS+r -DP+r -DE+r"
+
+
+# enables cd auto-correct
+shopt -s cdspell
+
+
+# rewrap text on window resize
+shopt -s checkwinsize
+
+
+# run neofetch on terminal startup
+neofetch
+
+
+# aliases
+alias nnn='nnn -a'
+
+
+# environment variables
+export QT_STYLE_OVERRIDE=Adwaita-dark
+export QT_QPA_PLATFORM=wayland
+export EDITOR=nvim
+export TERMINAL=alacritty
+export PAGER=bat
+export BAT_THEME=ansi
+
+
+
+
+
+# nnn config environment variables
+##################################
+
+# bookmarks
+#export NNN_BMS="path1;path2;etc"
+
+# assign keybinds to plugins
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui'

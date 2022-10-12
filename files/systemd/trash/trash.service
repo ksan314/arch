@@ -1,0 +1,7 @@
+[Unit]
+Description=delete items in trash over 30 days old
+Requires=multi-user.target
+After=multi-user.target
+
+[Service]
+ExecStart=trash-empty 30

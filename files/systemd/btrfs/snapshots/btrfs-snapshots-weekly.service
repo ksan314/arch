@@ -1,0 +1,7 @@
+[Unit]
+Description=takes weekly btrfs snapshots of root and home directories
+Requires=multi-user.target
+After=multi-user.target
+
+[Service]
+ExecStart=btrfs-snapshots-weekly.sh

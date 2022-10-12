@@ -1,0 +1,451 @@
+# Example config file located at /etc/sway/config
+# Read `man 5 sway` for a complete reference.
+
+
+
+
+
+####################
+# Hardware Variables
+####################
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+# You can get the identifiers for your inputs by running: swaymsg -t get_inputs
+
+
+# Outputs
+#########
+
+# Displays
+set $display1 DP-1
+set $display2 HDMI-A-1
+
+
+# Inputs
+########
+
+# Mouse
+set $mouse 1133:16500:Logitech_G305
+
+
+
+
+
+
+
+
+
+
+###########
+# Variables
+###########
+
+# Logo key
+set $mod Mod1
+
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+
+# Your preferred terminal emulator
+set $term alacritty
+
+
+# Your preferred application launcher
+set $applauncher albert show
+#set $applauncher wofi
+
+
+# Background image
+set $backgroundimage /usr/share/wallpapers/minimalriver.jpg
+
+
+# XWayland
+xwayland enable
+
+
+
+
+
+
+
+
+
+
+########################
+# Hardware Configuration
+########################
+
+# Displays
+output $display1 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
+output $display2 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
+
+
+# Show workspaces on display (comment out to cycle through displays)
+workspace 1 output $display1
+workspace 2 output $display1
+workspace 3 output $display1
+workspace 4 output $display1
+workspace 5 output $display1
+workspace 6 output $display1
+workspace 7 output $display1
+workspace 8 output $display1
+workspace 9 output $display1
+workspace 10 output $display2
+
+# Focus display on launch
+exec swaymsg focus output $display1
+
+
+# Mouse
+input $mouse accel_profile flat
+input $mouse pointer_accel 0.5
+
+
+
+
+
+
+
+
+#########
+# Startup
+#########
+
+# enable autotiling
+exec autotiling
+
+
+# enable albert
+exec albert
+
+
+# enable mako
+exec mako
+
+
+# clipboard
+# this quits working after a while (see github issue for updates)
+#exec wl-paste -pw wl-copy
+exec wl-paste -t text -w clipman store --max-items=1
+#exec wl-paste -pt text -w clipman store -P --histpath="~/.local/share/clipman-primary.json" --max-items=1
+# clear clipboard on startup
+exec clipman clear --all
+
+
+# mullvad-vpn
+exec mullvad-vpn
+
+
+# sound control
+# ~/.config/pipewire/pipewire-volume.sh sets max volume
+bindsym XF86AudioRaiseVolume exec ~/.config/pipewire/pipewire-volume.sh
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# if your keyboard has a mic mute key
+# bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# else
+bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+
+# gtk theme
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme Adwaita-dark
+    gsettings set $gnome-schema color-scheme prefer-dark
+}
+
+
+# enable gammastep
+exec gammastep
+
+
+
+
+
+
+
+
+
+
+#####################
+# Style Configuration
+#####################
+
+# Background image
+output * bg $backgroundimage fill
+
+
+default_border pixel 10
+gaps inner 15
+gaps outer 0
+
+
+# App specific configuration
+# You can get app_id (wayland) and class (xwayland) with: swaymsg -t get_tree | grep -Ei 'app_id|class'
+for_window	[app_id="albert"]				opacity set 0.9
+for_window	[class="Bitwarden"]				opacity set 0.95
+for_window	[class="Chromium"]				opacity set 0.95
+for_window	[class="Joplin"]				opacity set 0.95
+for_window      [class="librewolf"]				opacity set 0.95
+for_window	[app_id="org.gnome.Nautilus"]			opacity set 0.9
+for_window      [app_id="pavucontrol"]				opacity set 0.95
+for_window	[app_id="org.qbittorrent.qBittorrent"]		opacity set 0.95
+for_window      [app_id="tutanota-desktop"]			opacity set 0.9
+
+
+# Color scheme
+set $color_normal_black  #282828
+set $color_normal_red    #ff6666
+set $color_normal_green  #01a857
+set $color_bright_yellow #ffff44
+set $color_normal_white  #a89984
+set $color_bright_white  #ebdbb2
+set $color_normal_gray   #222222
+set $color_bright_gray   #3c3836
+set $color_unused        #fd6867
+
+# Colors                  border                 background             text                   indicator            child_border
+client.focused            $color_normal_green    $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_green
+client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
+client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray   $color_normal_black
+client.urgent             $color_normal_red      $color_normal_red      $color_normal_black    $color_unused        $color_unused
+client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
+
+
+
+
+
+
+
+
+
+
+####################
+# Idle configuration
+####################
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+
+
+
+
+
+
+
+
+
+##############
+# Key bindings
+##############
+
+# Drag windows with mod+mouse
+floating_modifier $mod normal
+
+
+bindsym {
+
+	# Launch a terminal
+	$mod+Return exec $term
+
+
+    	# Kill focused window
+    	$mod+Shift+q kill
+
+
+    	# Launch app launcher
+    	$mod+d exec $applauncher
+	# if using wofi
+	#$mod+d exec $applauncher --show drun | xargs swaymsg exec --
+
+
+	# Launch clipboard manager
+	#$mod+c exec clipman pick -t $applauncher
+
+
+    	# Reload the configuration file
+    	$mod+Shift+c reload
+
+
+    	# Exit sway (logs you out of your Wayland session)
+    	$mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+
+    	# Move your focus around
+    	$mod+$left focus left
+    	$mod+$down focus down
+    	$mod+$up focus up
+    	$mod+$right focus right
+    	# Or use $mod+[up|down|left|right]
+    	$mod+Left focus left
+    	$mod+Down focus down
+    	$mod+Up focus up
+    	$mod+Right focus right
+
+
+    	# Move the focused window with the same, but add Shift
+    	$mod+Shift+$left move left
+    	$mod+Shift+$down move down
+    	$mod+Shift+$up move up
+    	$mod+Shift+$right move right
+    	# Ditto, with arrow keys
+    	$mod+Shift+Left move left
+    	$mod+Shift+Down move down
+    	$mod+Shift+Up move up
+    	$mod+Shift+Right move right
+
+
+    	# Switch to workspace
+    	$mod+1 workspace number 1
+    	$mod+2 workspace number 2
+    	$mod+3 workspace number 3
+    	$mod+4 workspace number 4
+    	$mod+5 workspace number 5
+    	$mod+6 workspace number 6
+    	$mod+7 workspace number 7
+    	$mod+8 workspace number 8
+    	$mod+9 workspace number 9
+    	$mod+0 workspace number 10
+    	
+
+	# Move focused container to workspace
+    	$mod+Shift+1 move container to workspace number 1
+    	$mod+Shift+2 move container to workspace number 2
+    	$mod+Shift+3 move container to workspace number 3
+    	$mod+Shift+4 move container to workspace number 4
+    	$mod+Shift+5 move container to workspace number 5
+    	$mod+Shift+6 move container to workspace number 6
+    	$mod+Shift+7 move container to workspace number 7
+    	$mod+Shift+8 move container to workspace number 8
+    	$mod+Shift+9 move container to workspace number 9
+    	$mod+Shift+0 move container to workspace number 10
+
+
+	# Split
+    	$mod+b splith
+    	$mod+v splitv
+
+
+    	# Switch the current container between different layout styles
+    	$mod+s layout stacking
+    	$mod+w layout tabbed
+    	$mod+e layout toggle split
+
+
+    	# Make the current focus fullscreen
+    	$mod+f fullscreen
+
+
+    	# Toggle the current focus between tiling and floating mode
+    	$mod+Shift+space floating toggle
+
+
+    	# Swap focus between the tiling area and the floating area
+    	$mod+space focus mode_toggle
+
+
+    	# Move focus to the parent container
+    	$mod+a focus parent
+
+
+    	# Move the currently focused window to the scratchpad
+    	$mod+Shift+minus move scratchpad
+
+
+    	# Cycle through scratchpad windows
+    	$mod+minus scratchpad show
+
+
+	# Resize mode
+	$mod+r mode "resize"
+}
+
+
+
+
+
+
+
+
+
+
+#############
+# Resize mode
+#############
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize shrink height 10px
+    bindsym $up resize grow height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize shrink height 10px
+    bindsym Up resize grow height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+
+
+
+
+
+
+
+
+############
+# Status bar
+############
+
+bar {
+	position top
+	swaybar_command waybar
+}
+
+
+
+
+
+
+
+
+
+
+###############
+# System config
+###############
+
+include /etc/sway/config.d/*

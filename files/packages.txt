@@ -1,0 +1,194 @@
+# instructions
+##############
+
+# install the following packages with the following commands (paru and essential packages are required)
+# if you opted to include the repo owner's custom configurations, its recommended to install everything or some things may not work as expected
+
+
+
+
+
+
+
+
+
+
+# install and configure paru
+############################
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -cris
+cd
+rm -rf paru
+sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf
+sudo sed -i 's/#RemoveMake/RemoveMake = yes/' /etc/paru.conf
+sudo sed -i 's/#CleanAfter/CleanAfter/' /etc/paru.conf
+sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' /etc/paru.conf
+paru
+
+
+
+
+
+
+
+
+
+
+# essential packages
+####################
+
+# official repo
+# already installed during chroot script
+
+# aur
+paru -S --needed albert-minimal autotiling cheat clipman ttf-ms-fonts zramd
+
+
+
+
+
+
+
+
+
+
+# personal packages
+###################
+
+# official repo
+paru -S --needed android-tools bitwarden bleachbit blender btop clamav clonezilla discord easyeffects gammastep gedit gimp glow handbrake hashcat john libreoffice-fresh lutris minetest mpv nautilus nmap nnn shellcheck openshot qbittorrent qemu-full steam vlc xournalpp zathura
+
+# aur
+paru -S --needed cava hollywood jackett joplin-desktop librewolf-bin makemkv mullvad-vpn-cli phoronix-test-suite polymc soundcloud-dl spotify tor-browser ungoogled-chromium-bin tutanota-desktop ventoy-bin xdg-ninja
+
+# install ungoogled-chromium from obs repo
+#curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | sudo pacman-key -a -
+#echo -e "[home_ungoogled_chromium_Arch]\nSigLevel = Required TrustAll\nServer = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/\$arch" | sudo tee --append /etc/pacman.conf
+#paru
+#paru -S --needed ungoogled-chromium
+
+
+
+
+
+
+
+
+
+
+# dependencies
+##############
+
+# gedit
+
+# official repo
+paru -S --needed --asdeps gedit-plugins
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=gedit
+dependsOn=("gedit-plugins")
+package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
+# qemu
+
+# official repo
+paru -S --needed --asdeps bridge-utils dmidecode dnsmasq edk2-ovmf iptables-nft libvirt openbsd-netcat qemu-emulators-full qemu-guest-agent samba virt-manager
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=qemu-full
+dependsOn=("bridge-utils" "dmidecode" "dnsmasq" "edk2-ovmf" "iptables-nft" "libvirt" "openbsd-netcat" "qemu-emulators-full" "qemu-guest-agent" "samba" "virt-manager")
+package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
+# tutanota
+
+# official repo
+paru -S --needed --asdeps gnome-keyring
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=tutanota-desktop
+dependsOn=("gnome-keyring")
+package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
+# zathura
+
+# official repo
+paru -S --needed --asdeps zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=zathura
+dependsOn=("zathura-cb" "zathura-djvu" "zathura-pdf-mupdf" "zathura-ps")
+package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
+
+
+
+
+
+# final instructions
+####################
+
+# run the config script with the following commands to finish configuring the system
+su
+./config.sh

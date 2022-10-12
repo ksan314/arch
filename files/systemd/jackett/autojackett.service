@@ -1,0 +1,7 @@
+[Unit]
+Description=runs a small script that starts or stops jackett depending on if qBittorrent is running
+Requires=multi-user.target
+After=multi-user.target
+
+[Service]
+ExecStart=autojackett.sh
