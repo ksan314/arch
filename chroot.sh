@@ -18,7 +18,7 @@ sleep 2
 # import user inputs and system information
 ###########################################
 
-read -r hostName userName userPassword rootPassword timeZone reflectorCode diskName dualBoot customConfig archURL virtualMachine nvme processorVendor graphicsVendor < /confidentials
+read -r hostName userName userPassword rootPassword diskName timeZone reflectorCode dualBoot customConfig archURL virtualMachine nvme processorVendor graphicsVendor < /confidentials
 # needs to be the exact same list of variables as in the install script
 
 
@@ -220,10 +220,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # enable and speed up package builds
-if [ "$cpuThreads" != null ]
-then
-    sed -i 's/#MAKEFLAGS=\"-j[0-9]*\"/MAKEFLAGS=\"-j$(nproc)\"/g' /etc/makepkg.conf
-fi
+sed -i 's/#MAKEFLAGS=\"-j[0-9]*\"/MAKEFLAGS=\"-j$(nproc)\"/g' /etc/makepkg.conf
 
 
 # configure reflector
