@@ -125,7 +125,7 @@ pacman -S --needed --asdeps efibootmgr os-prober
 # set as dependencies
 package=grub
 dependsOn=("efibootmgr" "os-prober")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
@@ -143,7 +143,7 @@ pacman -S --needed --asdeps avahi cups cups-pdf foomatic-db-ppds foomatic-db-non
 # set as dependencies
 package=system-config-printer
 dependsOn=("avahi" "cups" "cups-pdf" "nss-mdns" "usbutils")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
