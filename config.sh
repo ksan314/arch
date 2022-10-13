@@ -185,8 +185,8 @@ printf "\e[1;32m\nConfiguring system\n\e[0m"
 sleep 2
 
 
-# create .config directory for user
-su -c "mkdir /home/$userName/.config" "$userName"
+# configure grub
+grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # start sway on login
@@ -252,6 +252,10 @@ su -c "systemctl --user enable wireplumber.service" "$userName"
 
 if [ "$customConfig" == true ]
 then
+
+# create .config directory for user
+su -c "mkdir /home/$userName/.config" "$userName"
+
 
 # configure pacman
 sed -i 's/#Color/Color/' /etc/pacman.conf
