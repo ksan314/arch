@@ -63,11 +63,6 @@ paru -S --needed android-tools bitwarden bleachbit blender btop clamav clonezill
 # aur
 paru -S --needed cava hollywood jackett joplin-desktop librewolf-bin makemkv mullvad-vpn-cli phoronix-test-suite polymc soundcloud-dl spotify tor-browser ungoogled-chromium-bin tutanota-desktop ventoy-bin xdg-ninja
 
-# install ungoogled-chromium from obs repo
-#curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | sudo pacman-key -a -
-#echo -e "[home_ungoogled_chromium_Arch]\nSigLevel = Required TrustAll\nServer = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/\$arch" | sudo tee --append /etc/pacman.conf
-#paru
-#paru -S --needed ungoogled-chromium
 
 
 
@@ -77,9 +72,8 @@ paru -S --needed cava hollywood jackett joplin-desktop librewolf-bin makemkv mul
 
 
 
-
-# dependencies
-##############
+# optional dependencies
+#######################
 
 # gedit
 
@@ -92,7 +86,7 @@ paru -S --needed --asdeps gedit-plugins
 # set as dependencies (copy this whole section into terminal)
 package=gedit
 dependsOn=("gedit-plugins")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
@@ -117,7 +111,7 @@ paru -S --needed --asdeps bridge-utils dmidecode dnsmasq edk2-ovmf iptables-nft 
 # set as dependencies (copy this whole section into terminal)
 package=qemu-full
 dependsOn=("bridge-utils" "dmidecode" "dnsmasq" "edk2-ovmf" "iptables-nft" "libvirt" "openbsd-netcat" "qemu-emulators-full" "qemu-guest-agent" "samba" "virt-manager")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
@@ -142,7 +136,7 @@ paru -S --needed --asdeps gnome-keyring
 # set as dependencies (copy this whole section into terminal)
 package=tutanota-desktop
 dependsOn=("gnome-keyring")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
@@ -167,7 +161,7 @@ paru -S --needed --asdeps zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps
 # set as dependencies (copy this whole section into terminal)
 package=zathura
 dependsOn=("zathura-cb" "zathura-djvu" "zathura-pdf-mupdf" "zathura-ps")
-package=$(ls /var/lib/pacman/local | grep -Ei "$package-[0-9]")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
     needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
