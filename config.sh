@@ -257,14 +257,6 @@ then
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 
-# configure pinfo
-#sed -i 's/COL_MENU           = COLOR_BLUE   ,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/COL_MENU           = COLOR_GREEN  ,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/' /etc/pinforc
-#sed -i 's/COL_NOTE           = COLOR_GREEN  ,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/COL_NOTE           = COLOR_BLUE   ,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/' /etc/pinforc
-#sed -i 's/COL_TOPLINE        = COLOR_YELLOW ,  COLOR_BLUE   ,  BOLD   ,  NO_BLINK/COL_TOPLINE        = COLOR_BLACK  ,  COLOR_GREEN  ,  BOLD   ,  NO_BLINK/' /etc/pinforc
-#sed -i 's/COL_BOTTOMLINE     = COLOR_YELLOW ,  COLOR_BLUE   ,  BOLD   ,  NO_BLINK/COL_BOTTOMLINE     = COLOR_BLACK  ,  COLOR_GREEN  ,  BOLD   ,  NO_BLINK/' /etc/pinforc
-#sed -i 's/COL_URL            = COLOR_MAGENTA,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/COL_URL            = COLOR_BLUE   ,  COLOR_DEFAULT,  BOLD   ,  NO_BLINK/' /etc/pinforc
-
-
 # configure app themes
 sed -i 's/Adwaita/Adwaita-dark/' /usr/share/gtk-2.0/gtkrc
 sed -i 's/Adwaita/Adwaita-dark/' /usr/share/gtk-3.0/settings.ini
@@ -299,11 +291,7 @@ then
 else
     # update server list
     mullvad relay update
-    
-    
-    # get user input for mullvadvpn
-    ###############################
-    
+	
     # get mullvadvpn account number
     while true
     do
@@ -366,10 +354,6 @@ else
             REPLY=
         fi
     done
-    
-    
-    # configure mullvadvpn
-    ######################
     
     # login to mullvadvpn
     mullvad account login "$mullvadAccount"
@@ -526,8 +510,6 @@ rm -rf /home/"$userName"/config.sh
 
 
 # take after config.sh snapshots
-#btrfs subvolume snapshot -r / /.snapshots/yearly/after-config.sh
-#btrfs subvolume snapshot -r /home /home/.snapshots/yearly/after-config.sh
 btrfs subvolume snapshot -r / /.snapshots/root/yearly/after-config.sh
 btrfs subvolume snapshot -r /home /.snapshots/home/yearly/after-config.sh
 
