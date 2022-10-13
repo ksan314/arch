@@ -81,6 +81,30 @@ read -srp $'\n'"Confirm new root password: " rootPassword2
 done
 
 
+# get disk name
+mapfile -t availableDisks < <(lsblk -o PATH,TYPE,MODEL | grep -i disk)
+PS3="Enter the number for the disk you want to use: "
+select selectedDisk in "${availableDisks[@]}"
+do
+  if (( REPLY > 0 && REPLY <= "${#availableDisks[@]}" ))
+  then
+    read -rp $'\n'"Are you sure you want to use the disk $selectedDisk? [Y/n] " diskConfirm
+    diskConfirm=${diskConfirm:-Y}
+            case $diskConfirm in
+                [yY][eE][sS]|[yY]) break;;
+                [nN][oO]|[nN]);;
+                *);;
+            esac
+            REPLY=
+  else
+    echo -e "\nInvalid option. Try another one\n"
+    sleep 2
+    REPLY=
+  fi
+done
+diskName=$(echo "$selectedDisk" | grep -Eo '^[[:graph:]]*[^ ]')
+
+
 # get timezone
 mapfile -t timeZones < <(timedatectl list-timezones)
 PS3="Enter the number for your current timezone: "
@@ -126,60 +150,6 @@ do
     fi
 done
 reflectorCode=$(echo "$reflectorCountry" | grep -o '[A-Z][A-Z]')
-
-
-# get disk name
-mapfile -t availableDisks < <(lsblk -o PATH,TYPE,MODEL | grep -i disk)
-PS3="Enter the number for the disk you want to use: "
-select selectedDisk in "${availableDisks[@]}"
-do
-  if (( REPLY > 0 && REPLY <= "${#availableDisks[@]}" ))
-  then
-    read -rp $'\n'"Are you sure you want to use the disk $selectedDisk? [Y/n] " diskConfirm
-    diskConfirm=${diskConfirm:-Y}
-            case $diskConfirm in
-                [yY][eE][sS]|[yY]) break;;
-                [nN][oO]|[nN]);;
-                *);;
-            esac
-            REPLY=
-  else
-    echo -e "\nInvalid option. Try another one\n"
-    sleep 2
-    REPLY=
-  fi
-done
-diskName=$(echo "$selectedDisk" | grep -Eo '^[[:graph:]]*[^ ]')
-
-
-# get disk shred
-#while true
-#do
-#read -rp $'\n'"Would you like to erase all data on the disk $diskName? [Y/n] " diskShred
-    #diskShred=${diskShred:-Y}
-    #if [ "$diskShred" == Y ] || [ "$diskShred" == y ] || [ "$diskShred" == yes ] || [ "$diskShred" == YES ] || [ "$diskShred" == Yes ]
-    #then
-        #diskShred=true
-        #read -rp $'\n'"Are you sure you DO want to erase all data on the disk $diskName? [Y/n] " diskshredConfirm
-        #diskshredConfirm=${diskshredConfirm:-Y}
-        #case $diskshredConfirm in
-            #[yY][eE][sS]|[yY]) break;;
-            #[nN][oO]|[nN]);;
-            #*);;
-        #esac
-        #REPLY=
-    #else
-        #diskShred=false
-        #read -rp $'\n'"Are you sure you DO NOT want to erase all data on the disk $diskName? [Y/n] " diskshredConfirm
-        #diskshredConfirm=${diskshredConfirm:-Y}
-        #case $diskshredConfirm in
-            #[yY][eE][sS]|[yY]) break;;
-            #[nN][oO]|[nN]);;
-            #*);;
-        #esac
-        #REPLY=
-    #fi
-#done
 
 
 # should the system check for other operating systems?
@@ -326,7 +296,7 @@ fi
 # save inputs that will be needed for chroot script in a file that will be sourced later
 ########################################################################################
 
-echo -e "$hostName $userName $userPassword $rootPassword $timeZone $reflectorCode $diskName $dualBoot $customConfig $archURL $virtualMachine $nvme $processorVendor $graphicsVendor" > ./confidentials
+echo -e "$hostName $userName $userPassword $rootPassword $diskName $timeZone $reflectorCode $dualBoot $customConfig $archURL $virtualMachine $nvme $processorVendor $graphicsVendor" > ./confidentials
 
 
 
@@ -368,17 +338,6 @@ sleep 2
 
 # unmount any partitions mounted to /mnt
 umount -R /mnt
-
-
-# shred disk
-#if [ "$diskShred" == true ]
-#then
-    #shred -v --random-source=/dev/zero -n1 "$diskName"
-#fi
-
-
-# wipe existing filesystems
-#wipefs -a "$diskName"
 
 
 # create partitions
@@ -423,7 +382,6 @@ fi
 
 
 # mount and configure filesystems and subvolumes
-# snapshots for /home will be configured in config script since we dont want /home/.snapshots to be included in fstab
 if [ "$nvme" == true ]
 then
   mount "$diskName"p2 /mnt
