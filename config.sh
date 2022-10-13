@@ -68,7 +68,7 @@ fi
 # backup boot partition on kernel updates
 #########################################
 
-# see "snapshots and /boot parition" section on "system backup" arch wiki page)
+# see "snapshots and /boot parition" section on "system backup" arch wiki page
 mkdir /etc/pacman.d/hooks
 cp /home/"$userName"/arch/files/95-bootbackup.hook /etc/pacman.d/hooks
 
