@@ -30,6 +30,7 @@ else
 
 
 	# get mullvadvpn server country
+	echo -e "\n\n\n"
 	mapfile -t serverCountries < <(mullvad relay list | grep -Eo '\([a-z][a-z]\)' | grep -Eo '[a-z][a-z]')
 	PS3="Enter the number for the mullvadvpn server country you want to use: "
 	select serverCountry in "${serverCountries[@]}"
@@ -53,6 +54,7 @@ else
 
 
 	# get mullvadvpn server city
+	echo -e "\n\n\n"
 	mapfile -t serverCities < <(mullvad relay list | grep -Eo "$serverCountry-[a-z][a-z][a-z]" | grep -Eo '[a-z][a-z][a-z]$')
 	PS3="Enter the number for the mullvadvpn server city you want to use: "
 	select serverCity in "${serverCities[@]}"
