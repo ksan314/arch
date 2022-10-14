@@ -58,7 +58,7 @@ then
 fi
 if [ "$graphicsVendor" == amd ]
 then
-    pacman -S --needed mesa lib32-mesa lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau vulkan-radeon xf86-video-amdgpu
+    pacman -S --needed xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau  
 fi
 if [ "$graphicsVendor" == intel ]
 then
