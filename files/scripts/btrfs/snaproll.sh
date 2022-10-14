@@ -61,6 +61,7 @@ fi
 
 
 # get the snapshot you want to restore
+echo -e "\n\n\n"
 mapfile -t snapShots < <(btrfs subvolume list -o /.snapshots | grep "$snapshotFolder" | grep -Eo '@[[:print:]]*$')
 PS3="Enter the number for the snapshot you want to restore: "
 select snapShot in "${snapShots[@]}"
@@ -95,6 +96,7 @@ done
 ########################################################################################################
 
 # ask user if they want to restore the entire subvolume
+echo -e "\n\n\n"
 if [ "$subVolume" == @home ]
 then
 	directoryNumber=$(ls /home | grep -Eoc '[[:graph:]]')
@@ -132,6 +134,7 @@ fi
 		
 
 # if the user wants to perform a partial restore of the /home directory, backup the necessary /home subdirectories
+echo -e "\n\n\n"
 if [ "$partialRestore" == true ]
 then
 	# get the directory you want to restore so others can be backed up
