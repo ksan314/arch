@@ -193,7 +193,7 @@ done
 echo -e "\n\n\n"
 while true
 do
-read -rp $'\n'"Would you like to include the repo owner's personal configurations? (Includes colored terminal output, app themes, anti-malware scanners, and dotfiles from the dotfile folder) [Y/n] " customConfig
+read -rp $'\n'"Would you like to include the repo owner's personal configurations? (For details on what this includes, see the "custom configurations" section in the "config.sh" script) [Y/n] " customConfig
     customConfig=${customConfig:-Y}
     if [ "$customConfig" == Y ] || [ "$customConfig" == y ] || [ "$customConfig" == yes ] || [ "$customConfig" == YES ] || [ "$customConfig" == Yes ]
     then
