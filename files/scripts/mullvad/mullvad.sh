@@ -108,6 +108,7 @@ else
 		
 	else
 		printf "\e[1;31m\nLogin to Mullvad not successful\n\e[0m"
+		exit
 	fi
 
 fi
