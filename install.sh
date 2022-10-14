@@ -162,24 +162,24 @@ reflectorCode=$(echo "$reflectorCountry" | grep -o '[A-Z][A-Z]')
 echo -e "\n\n\n"
 while true
 do
-read -rp $'\n'"Would you like the bootloader to check for other operating systems? [Y/n] " dualBoot
-    dualBoot=${dualBoot:-Y}
-if [ "$dualBoot" == Y ] || [ "$dualBoot" == y ] || [ "$dualBoot" == yes ] || [ "$dualBoot" == YES ] || [ "$dualBoot" == Yes ]
+read -rp $'\n'"Would you like the bootloader to check for other operating systems? [Y/n] " multiBoot
+    multiBoot=${multiBoot:-Y}
+if [ "$multiBoot" == Y ] || [ "$multiBoot" == y ] || [ "$multiBoot" == yes ] || [ "$multiBoot" == YES ] || [ "$multiBoot" == Yes ]
 then
-    dualBoot=true
-    read -rp $'\n'"Are you sure you DO want the bootloader to check for other operating systems? [Y/n] " dualbootConfirm
-        dualbootConfirm=${dualbootConfirm:-Y}
-        case $dualbootConfirm in
+    multiBoot=true
+    read -rp $'\n'"Are you sure you DO want the bootloader to check for other operating systems? [Y/n] " multibootConfirm
+        multibootConfirm=${multibootConfirm:-Y}
+        case $multibootConfirm in
             [yY][eE][sS]|[yY]) break;;
             [nN][oO]|[nN]);;
             *);;
         esac
         REPLY=
 else
-    dualBoot=false
-    read -rp $'\n'"Are you sure you DO NOT want the bootloader to check for other operating systems? [Y/n] " dualbootConfirm
-        dualbootConfirm=${dualbootConfirm:-Y}
-        case $dualbootConfirm in
+    multiBoot=false
+    read -rp $'\n'"Are you sure you DO NOT want the bootloader to check for other operating systems? [Y/n] " multibootConfirm
+        multibootConfirm=${multibootConfirm:-Y}
+        case $multibootConfirm in
             [yY][eE][sS]|[yY]) break;;
             [nN][oO]|[nN]);;
             *);;
@@ -304,7 +304,7 @@ fi
 # save inputs that will be needed for chroot script in a file that will be sourced later
 ########################################################################################
 
-echo -e "$hostName $userName $userPassword $rootPassword $diskName $timeZone $reflectorCode $dualBoot $customConfig $archURL $virtualMachine $nvme $processorVendor $graphicsVendor" > ./confidentials
+echo -e "$hostName $userName $userPassword $rootPassword $diskName $timeZone $reflectorCode $multiBoot $customConfig $archURL $virtualMachine $nvme $processorVendor $graphicsVendor" > ./confidentials
 
 
 
