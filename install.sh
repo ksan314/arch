@@ -24,6 +24,7 @@ done
 
 
 # get username
+echo -e "\n\n\n"
 while true
 do
 read -rp $'\n'"Enter new username: " userName
@@ -44,6 +45,7 @@ done
 
 
 # get user password
+echo -e "\n\n\n"
 while true
 do
 read -srp $'\n'"Enter new password for $userName: " userPassword1
@@ -62,6 +64,7 @@ done
 
 
 # get root password
+echo -e "\n\n\n"
 while true
 do
 read -srp $'\n'"Enter new root password: " rootPassword1
@@ -82,6 +85,7 @@ done
 
 
 # get disk name
+echo -e "\n\n\n"
 mapfile -t availableDisks < <(lsblk -o PATH,TYPE,MODEL | grep -i disk)
 PS3="Enter the number for the disk you want to use: "
 select selectedDisk in "${availableDisks[@]}"
@@ -106,6 +110,7 @@ diskName=$(echo "$selectedDisk" | grep -Eo '^[[:graph:]]*[^ ]')
 
 
 # get timezone
+echo -e "\n\n\n"
 mapfile -t timeZones < <(timedatectl list-timezones)
 PS3="Enter the number for your current timezone: "
 select timeZone in "${timeZones[@]}"
@@ -129,6 +134,7 @@ done
 
 
 # get reflector country
+echo -e "\n\n\n"
 mapfile -t reflectorCountries < <(reflector --list-countries)
 PS3="Enter the number for the country you want to download packages from: "
 select reflectorCountry in "${reflectorCountries[@]}"
@@ -153,6 +159,7 @@ reflectorCode=$(echo "$reflectorCountry" | grep -o '[A-Z][A-Z]')
 
 
 # should the system check for other operating systems?
+echo -e "\n\n\n"
 while true
 do
 read -rp $'\n'"Would you like the bootloader to check for other operating systems? [Y/n] " dualBoot
@@ -183,6 +190,7 @@ done
 
 
 # get custom config
+echo -e "\n\n\n"
 while true
 do
 read -rp $'\n'"Would you like to include the repo owner's personal configurations? (Includes colored terminal output, app themes, anti-malware scanners, and dotfiles from the dotfile folder) [Y/n] " customConfig
