@@ -18,7 +18,7 @@ sleep 2
 # import user inputs and system information
 ###########################################
 
-read -r hostName userName userPassword rootPassword diskName timeZone reflectorCode dualBoot customConfig archURL virtualMachine nvme processorVendor graphicsVendor < /confidentials
+read -r hostName userName userPassword rootPassword diskName timeZone reflectorCode multiBoot customConfig archURL virtualMachine nvme processorVendor graphicsVendor < /confidentials
 # needs to be the exact same list of variables as in the install script
 
 
@@ -211,7 +211,7 @@ mkinitcpio -p linux
 
 # configure grub
 sed -i 's/GRUB_TIMEOUT=[0-9]*/GRUB_TIMEOUT=3/' /etc/default/grub
-if [ "$dualBoot" == true ]
+if [ "$multiBoot" == true ]
 then
   sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
 fi
