@@ -105,6 +105,9 @@ else
     
 		# always require vpn
 		mullvad always-require-vpn set on
+		
+	else
+		printf "\e[1;31m\nLogin to Mullvad not successful\n\e[0m"
 	fi
 
 fi
