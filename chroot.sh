@@ -79,7 +79,7 @@ pacman -S --needed arch-wiki-docs arch-wiki-lite base base-devel bash bash-compl
 # install tools
 printf "\e[1;32m\nInstalling tools\n\e[0m"
 sleep 2
-pacman -S --needed bat firewalld fzf git gnupg hwinfo inotify-tools lshw nano neovim zoxide
+pacman -S --needed bat firewalld fzf git gnupg hwinfo inotify-tools lshw nano neovim thefuck zoxide
 
 
 # install desktop packages
