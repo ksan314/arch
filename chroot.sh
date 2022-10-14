@@ -73,7 +73,7 @@ fi
 # install essential packages
 printf "\e[1;32m\nInstalling essential packages\n\e[0m"
 sleep 2
-pacman -S --needed arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils firewalld grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli unzip zip
+pacman -S --needed arch-wiki-docs arch-wiki-lite base base-devel bash btrfs-progs coreutils exfat-utils grub ifuse libimobiledevice man-db man-pages mlocate networkmanager npm ntfs-3g pinfo python-pip reflector rsync tldr trash-cli unzip zip
 
 
 # install tools
@@ -82,16 +82,16 @@ sleep 2
 pacman -S --needed bat firewalld fzf git gnupg hwinfo inotify-tools lshw nano neovim zoxide
 
 
-# install necessary packages
-printf "\e[1;32m\nInstalling necessary packages\n\e[0m"
-sleep 2
-pacman -S --needed archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
-
-
 # install desktop packages
 printf "\e[1;32m\nInstalling desktop packages\n\e[0m"
 sleep 2
 pacman -S --needed alacritty foot mako seatd sway swaybg swaylock swayidle waybar wayland wayland-docs wayland-utils wlc wl-clipboard xorg-xwayland
+
+
+# install necessary desktop packages
+printf "\e[1;32m\nInstalling necessary desktop packages\n\e[0m"
+sleep 2
+pacman -S --needed archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
 
 
 # install audio packages
