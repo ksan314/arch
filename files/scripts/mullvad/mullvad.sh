@@ -82,7 +82,7 @@ else
 
 
 	# if login successful, configure mullvadvpn
-	mullvadLogin=$(mullvad account get | grep -E '[0-9]+')
+	mullvadLogin=$(mullvad account get | grep "$mullvadAccount")
 	if [ -n "$mullvadLogin" ]
 	then
 		# set server location
