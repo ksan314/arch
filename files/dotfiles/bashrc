@@ -25,10 +25,6 @@ export MANPAGER="less -R --use-color -Dd+g -Du+b -Ds+r -DS+r -DP+r -DE+r"
 shopt -s cdspell
 
 
-# enables tab completion when using sudo
-#complete -cf sudo
-
-
 # rewrap text on window resize
 shopt -s checkwinsize
 
