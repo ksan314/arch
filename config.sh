@@ -47,7 +47,7 @@ swapSize=$(echo -e "$ramSize * 0.5" | bc)
 swapsizeInteger=${swapSize%.*}
 
 
-# get custom config
+# get customConfig variable
 customConfig=$(ls /usr/share | grep -io 'wallpapers')
 if [ "$customConfig" == wallpapers ]
 then
@@ -112,7 +112,7 @@ mkdir /.snapshots/root/yearly
 mkdir /.snapshots/home/yearly
 
 
-# configure scripts
+# configure btrfs scripts
 cp /home/"$userName"/arch/files/scripts/btrfs/btrfs-snapshots.sh /usr/local/bin/btrfs-snapshots-hourly.sh
 sed -i 's/NUMBEROFSNAPSHOTS/24/' /usr/local/bin/btrfs-snapshots-hourly.sh
 sed -i 's/TIMELINE/hourly/' /usr/local/bin/btrfs-snapshots-hourly.sh
@@ -139,7 +139,7 @@ sed -i 's/TIMELINE/yearly/' /usr/local/bin/btrfs-snapshots-yearly.sh
 chmod +x /usr/local/bin/btrfs-snapshots-yearly.sh
 
 
-# configure systemd units
+# configure btrfs systemd units
 cp /home/"$userName"/arch/files/systemd/btrfs/snapshots/btrfs-snapshots-hourly.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/btrfs/snapshots/btrfs-snapshots-hourly.timer /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/btrfs/snapshots/btrfs-snapshots-daily.service /etc/systemd/system
