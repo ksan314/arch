@@ -326,6 +326,8 @@ else
 		# save mullvad.sh script
 		su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
 		su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
+		printf "\e[1;31m\nmullvad.sh saved to home directory\n\e[0m"
+		sleep 3
 	elif [ "$mullvadConfig" == true ]
 	then
 		# run mullvad.sh script
