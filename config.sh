@@ -335,11 +335,9 @@ else
 		/home/"$userName"/arch/files/scripts/mullvad/mullvad.sh
 		
 		# if mullvad.sh unsuccessful, save mullvad.sh
-		mullvadLogin=$(mullvad account get | grep "$mullvadAccount")
-		if [ -n "$mullvadLogin" ]
+		mullvadLogin=$(mullvad account get | grep -E '[0-9]+')
+		if [ -z "$mullvadLogin" ]
 		then
-			sleep 1
-		else
 			su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
 			su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
 			printf "\e[1;31m\nmullvad.sh saved to home directory\n\e[0m"
