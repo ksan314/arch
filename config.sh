@@ -320,7 +320,12 @@ else
     	fi
 	done
 
-	if [ "$mullvadConfig" == true ]
+	if [ "$mullvadConfig" == false ]
+	then
+		# save mullvad.sh script
+		su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
+		su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
+	elif [ "$mullvadConfig" == true ]
 	then
 		# update server list
 		mullvad relay update
@@ -489,11 +494,6 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 # jackett
 cp -r /home/"$userName"/arch/files/scripts/jackett/autojackett.sh /usr/local/bin
 chmod +x /usr/local/bin/autojackett.sh
-
-
-# mullvadvpn
-su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
-su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
 
 
 # pipewire
