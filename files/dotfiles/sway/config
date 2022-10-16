@@ -137,10 +137,6 @@ exec wl-paste -t text -w clipman store --max-items=1
 exec clipman clear --all
 
 
-# mullvad-vpn
-exec mullvad-vpn
-
-
 # sound control
 # ~/.config/pipewire/pipewire-volume.sh sets max volume
 bindsym XF86AudioRaiseVolume exec ~/.config/pipewire/pipewire-volume.sh
