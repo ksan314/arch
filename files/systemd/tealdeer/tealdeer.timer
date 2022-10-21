@@ -1,0 +1,10 @@
+[Unit]
+Description=updates tldr local cache
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+AccuracySec=3hours
+
+[Install]
+WantedBy=multi-user.target
