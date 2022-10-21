@@ -207,10 +207,6 @@ cp -r ~/.pinforc files/dotfiles/pinforc
 cp -r ~/.config/sway files/dotfiles
 
 
-# tealdeer
-cp -r ~/.config/tealdeer files/dotfiles
-
-
 # waybar
 cp -r ~/.config/waybar files/dotfiles
 
