@@ -393,10 +393,6 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/pinforc /home/$userName/.pinfor
 su -c "cp -r /home/$userName/arch/files/dotfiles/sway /home/$userName/.config" "$userName"
 
 
-# tealdeer
-su -c "cp -r /home/$userName/arch/files/dotfiles/tealdeer /home/$userName/.config" "$userName"
-
-
 # waybar
 su -c "cp -r /home/$userName/arch/files/dotfiles/waybar /home/$userName/.config" "$userName"
 
@@ -450,6 +446,14 @@ sed -i "s/USERNAME/$userName/" /etc/systemd/system/nnnplugins.service
 systemctl daemon-reload
 systemctl start nnnplugins.service
 systemctl enable nnnplugins.timer
+
+
+# configure tealdeer
+cp /home/"$userName"/arch/files/systemd/tealdeer/tealdeer.service /etc/systemd/system
+cp /home/"$userName"/arch/files/systemd/tealdeer/tealdeer.timer /etc/systemd/system
+systemctl daemon-reload
+systemctl start tealdeer.service
+systemctl enable tealdeer.timer
 
 
 # configure trash
