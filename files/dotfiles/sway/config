@@ -138,8 +138,8 @@ exec clipman clear --all
 
 
 # sound control
-# ~/.config/pipewire/pipewire-volume.sh sets max volume
-bindsym XF86AudioRaiseVolume exec ~/.config/pipewire/pipewire-volume.sh
+# /usr/local/bin/pipewire-max-volume.sh sets max volume
+bindsym XF86AudioRaiseVolume exec /usr/local/bin/pipewire-max-volume.sh
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # if your keyboard has a mic mute key
