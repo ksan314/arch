@@ -408,12 +408,12 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 ##############
 
 # jackett
-cp -r /home/"$userName"/arch/files/scripts/jackett/autojackett.sh /usr/local/bin
+cp /home/"$userName"/arch/files/scripts/jackett/autojackett.sh /usr/local/bin
 chmod +x /usr/local/bin/autojackett.sh
 
 
 # pipewire
-cp -r /home/"$userName"/arch/files/scripts/pipewire/pipewire-max-volume.sh /usr/local/bin
+cp /home/"$userName"/arch/files/scripts/pipewire/pipewire-max-volume.sh /usr/local/bin
 chmod +x /usr/local/bin/pipewire-max-volume.sh
 
 
