@@ -413,8 +413,8 @@ chmod +x /usr/local/bin/autojackett.sh
 
 
 # pipewire
-su -c "cp -r /home/$userName/arch/files/scripts/pipewire /home/$userName/.config" "$userName"
-su -c "chmod +x /home/$userName/.config/pipewire/pipewire-volume.sh" "$userName"
+cp -r /home/"$userName"/arch/files/scripts/pipewire/pipewire-max-volume.sh /usr/local/bin
+chmod +x /usr/local/bin/pipewire-max-volume.sh
 
 
 
