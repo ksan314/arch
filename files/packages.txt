@@ -43,7 +43,7 @@ paru
 # already installed during chroot script
 
 # aur
-paru -S --needed albert-minimal autotiling cheat clipman ttf-ms-fonts zramd
+paru -S --needed albert autotiling cheat clipman ttf-ms-fonts zramd
 
 
 
