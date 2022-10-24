@@ -60,3 +60,4 @@ text/x-chdr=vim.desktop;
 text/plain=libreoffice-writer.desktop;vim.desktop;
 application/pdf=org.pwmt.zathura.desktop;chromium.desktop;libreoffice-draw.desktop;
 text/x-systemd-unit=nvim.desktop;
+video/x-matroska=mpv.desktop;
