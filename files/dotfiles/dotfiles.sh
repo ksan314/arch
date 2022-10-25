@@ -207,6 +207,10 @@ cp -r ~/.pinforc files/dotfiles/pinforc
 cp -r ~/.config/sway files/dotfiles
 
 
+# swaylock
+cp -r ~/.config/swaylock files/dotfiles
+
+
 # waybar
 cp -r ~/.config/waybar files/dotfiles
 
