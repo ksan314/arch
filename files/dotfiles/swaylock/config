@@ -1,0 +1,10 @@
+image=/usr/share/wallpapers/minimalriver.jpg
+scaling=fill
+
+daemonize
+
+indicator-idle-visible
+
+key-hl-color=00000000
+bs-hl-color=00000000
+separator-color=00000000
