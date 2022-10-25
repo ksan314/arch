@@ -61,7 +61,7 @@ paru -S --needed albert autotiling cheat clipman ttf-ms-fonts zramd
 paru -S --needed android-tools bitwarden bleachbit blender btop clamav clonezilla discord easyeffects gammastep gedit gimp glow handbrake hashcat john libqalculate libreoffice-fresh lutris minetest mpv nautilus neofetch nmap nnn nvtop shellcheck openshot qbittorrent qemu-full steam vlc xournalpp zathura
 
 # aur
-paru -S --needed cava cbonsai hollywood jackett joplin-desktop librewolf-bin makemkv mullvad-vpn-cli phoronix-test-suite prismlauncher soundcloud-dl spotify tor-browser ungoogled-chromium-bin tutanota-desktop ventoy-bin xdg-ninja
+paru -S --needed appimagelauncher cava cbonsai hollywood jackett joplin-desktop librewolf-bin makemkv mullvad-vpn-cli phoronix-test-suite prismlauncher soundcloud-dl spotify tor-browser ungoogled-chromium-bin tutanota-desktop ventoy-bin xdg-ninja
 
 
 
