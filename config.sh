@@ -134,7 +134,7 @@ sed -i 's/TIMELINE/monthly/' /usr/local/bin/btrfs-snapshots-monthly.sh
 chmod +x /usr/local/bin/btrfs-snapshots-monthly.sh
 
 cp /home/"$userName"/arch/files/scripts/btrfs/btrfs-snapshots.sh /usr/local/bin/btrfs-snapshots-yearly.sh
-sed -i 's/NUMBEROFSNAPSHOTS/5/' /usr/local/bin/btrfs-snapshots-yearly.sh
+sed -i 's/NUMBEROFSNAPSHOTS/3/' /usr/local/bin/btrfs-snapshots-yearly.sh
 sed -i 's/TIMELINE/yearly/' /usr/local/bin/btrfs-snapshots-yearly.sh
 chmod +x /usr/local/bin/btrfs-snapshots-yearly.sh
 
