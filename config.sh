@@ -393,6 +393,10 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/pinforc /home/$userName/.pinfor
 su -c "cp -r /home/$userName/arch/files/dotfiles/sway /home/$userName/.config" "$userName"
 
 
+# swaylock
+su -c "cp -r /home/$userName/arch/files/dotfiles/swaylock /home/$userName/.config" "$userName"
+
+
 # waybar
 su -c "cp -r /home/$userName/arch/files/dotfiles/waybar /home/$userName/.config" "$userName"
 
