@@ -239,6 +239,11 @@ systemctl enable NetworkManager
 systemctl enable shadow.timer
 
 
+# configure flatpak
+# create a symlink so that flatpaks are in /usr/share/applications
+ln -s /var/lib/flatpak /usr/share/applications
+
+
 # enable sway 
 # add user to seat group
 usermod -aG seat kaleb
