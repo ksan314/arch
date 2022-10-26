@@ -38,8 +38,10 @@ alias nnn='nnn -a'
 
 
 # environment variables
+export QT_QPA_PLATFORM=wayland-egl
+export XDG_SESSION_TYPE=wayland
+export QT_WAYLAND_FORCE_DPI=physical
 export QT_STYLE_OVERRIDE=Adwaita-dark
-export QT_QPA_PLATFORM=wayland
 export EDITOR=nvim
 export TERMINAL=alacritty
 export PAGER=bat

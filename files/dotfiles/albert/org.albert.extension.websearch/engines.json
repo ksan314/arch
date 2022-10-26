@@ -6,6 +6,12 @@
         "url": "https://duckduckgo.com/?q=%s"
     },
     {
+        "iconPath": ":google",
+        "name": "Google",
+        "trigger": "gg ",
+        "url": "https://www.google.com/search?q=%s"
+    },
+    {
         "iconPath": ":youtube",
         "name": "Youtube",
         "trigger": "yt ",
