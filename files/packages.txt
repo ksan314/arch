@@ -128,14 +128,14 @@ done
 # tutanota
 
 # official repo
-paru -S --needed --asdeps gnome-keyring
+paru -S --needed --asdeps gnome-keyring seahorse
 
 # aur
 # none
 
 # set as dependencies (copy this whole section into terminal)
 package=tutanota-desktop
-dependsOn=("gnome-keyring")
+dependsOn=("gnome-keyring" "seahorse")
 package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
