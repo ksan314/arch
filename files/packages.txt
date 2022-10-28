@@ -100,6 +100,31 @@ done
 
 
 
+# nautilus
+
+# official repo
+paru -S --needed --asdeps gvfs-afc gvfs-mtp
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=nautilus
+dependsOn=("gvfs-afc" "gvfs-mtp")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
 # qemu
 
 # official repo
