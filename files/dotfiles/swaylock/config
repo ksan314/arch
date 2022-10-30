@@ -1,10 +1,54 @@
-image=/usr/share/wallpapers/minimalriver.jpg
-scaling=fill
+# behavior
+##########
 
 daemonize
+ignore-empty-password
 
+
+
+
+
+# appearance
+############
+
+image=/usr/share/wallpapers/minimalriver.jpg
+scaling=fill
 indicator-idle-visible
 
-key-hl-color=00000000
-bs-hl-color=00000000
+text-color=000000ff
+inside-color=00000055
+ring-color=00000055
+line-color=00000000
+key-hl-color=00000055
+bs-hl-color=00000055
 separator-color=00000000
+
+
+# caps lock
+text-caps-lock-color=000000ff
+inside-caps-lock-color=00000055
+ring-caps-lock-color=00000055
+line-caps-lock-color=00000000
+caps-lock-key-hl-color=00000055
+caps-lock-bs-hl-color=00000055
+
+
+# cleared
+text-clear-color=000000ff
+inside-clear-color=00000055
+ring-clear-color=00000055
+line-clear-color=00000000
+
+
+# verifying
+text-ver-color=000000ff
+inside-ver-color=00000055
+ring-ver-color=00000055
+line-ver-color=00000000
+
+
+# wrong
+text-wrong-color=000000ff
+inside-wrong-color=00000055
+ring-wrong-color=00000055
+line-wrong-color=00000000

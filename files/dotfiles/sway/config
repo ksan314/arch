@@ -193,14 +193,14 @@ for_window      [class="librewolf"]				opacity set 0.95
 for_window	[app_id="org.gnome.Nautilus"]			opacity set 0.9
 for_window      [app_id="pavucontrol"]				opacity set 0.95
 for_window	[app_id="org.qbittorrent.qBittorrent"]		opacity set 0.95
-for_window      [app_id="tutanota-desktop"]			opacity set 0.9
+for_window      [class="tutanota-desktop"]			opacity set 0.95
 
 
 # Color scheme
 set $color_normal_black  #282828
-set $color_normal_red    #ff6666
-set $color_normal_green  #01a857
-set $color_bright_yellow #ffff44
+set $color_normal_red    #ff4444
+set $color_normal_green  #11b867
+set $color_bright_yellow #ffff66
 set $color_normal_white  #a89984
 set $color_bright_white  #ebdbb2
 set $color_normal_gray   #222222
@@ -228,12 +228,12 @@ client.placeholder        $color_unused          $color_unused          $color_u
 ####################
 
 exec swayidle -w \
-	timeout 900 'swaylock -f -c 000000' \
-	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	timeout 1800 'swaylock -f -c 000000' \
+	timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock -f -c 000000'
 
-# This will lock your screen after 15 minutes seconds of inactivity, then turn off
-# your displays after another 15 minutes, and turn your screens back on when
+# This will lock your screen after 30 minutes seconds of inactivity, then turn off
+# your displays after another 30 minutes, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 

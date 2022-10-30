@@ -41,7 +41,7 @@ font:
     family: Hack
     style: Bold Italic
   size: 12.0
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 
 
@@ -53,24 +53,24 @@ colors:
     #bright_foreground:
 
   normal:
-    black:   '#000000'
-    red:     '#ff6666'
-    green:   '#01a857'
-    yellow:  '#cccc55'
-    blue:    '#208baf'
-    magenta: '#805984'
-    cyan:    '#00cccc'
-    white:   '#bbbbbb'
+    black:    '#000000'
+    red:      '#ff4444'
+    green:    '#11b867'
+    yellow:   '#dddd33'
+    blue:     '#208baf'
+    magenta:  '#855989'
+    cyan:     '#00cccc'
+    white:    '#bbbbbb'
 
   bright:
-    black:   '#333333'
-    red:     '#ff8888'
-    green:   '#13c069'
-    yellow:  '#ffff44'
-    blue:    '#52b0bb'
-    magenta: '#c397d8'
-    cyan:    '#00ffff'
-    white:   '#ffffff'
+    black:    '#333333'
+    red:      '#ff6666'
+    green:    '#33e089'
+    yellow:   '#ffff66'
+    blue:     '#50bbcf'
+    magenta:  '#b387c8'
+    cyan:     '#00ffff'
+    white:    '#ffffff'
 
   dim:
     black:   '#131415'
