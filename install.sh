@@ -239,7 +239,7 @@ sleep 2
 printf "\e[1;32m\nInstalling packages needed for installation\n\e[0m"
 sleep 2
 
-pacman -S archlinux-keyring ca-certificates neofetch virt-what
+pacman -S archlinux-keyring ca-certificates neofetch upower virt-what
 
 
 
@@ -264,6 +264,16 @@ then
     virtualMachine=false
 else
     virtualMachine=true
+fi
+
+
+# check if installing on a laptop
+laptopInstall=$(upower --show-info)
+if [ -z "$laptopInstall" ]
+then
+    laptopInstall=false
+else
+    laptopInstall=true
 fi
 
 
@@ -304,7 +314,7 @@ fi
 # save inputs that will be needed for chroot script in a file that will be sourced later
 ########################################################################################
 
-echo -e "$hostName $userName $userPassword $rootPassword $diskName $timeZone $reflectorCode $multiBoot $customConfig $archURL $virtualMachine $nvme $processorVendor $graphicsVendor" > ./confidentials
+echo -e "$hostName $userName $userPassword $rootPassword $diskName $timeZone $reflectorCode $multiBoot $customConfig $archURL $virtualMachine $laptopInstall $nvme $processorVendor $graphicsVendor" > ./confidentials
 
 
 
