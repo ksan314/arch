@@ -18,7 +18,7 @@ sleep 2
 # import user inputs and system information
 ###########################################
 
-read -r hostName userName userPassword rootPassword diskName timeZone reflectorCode multiBoot customConfig archURL virtualMachine nvme processorVendor graphicsVendor < /confidentials
+read -r hostName userName userPassword rootPassword diskName timeZone reflectorCode multiBoot customConfig archURL virtualMachine laptopInstall nvme processorVendor graphicsVendor < /confidentials
 # needs to be the exact same list of variables as in the install script
 
 
