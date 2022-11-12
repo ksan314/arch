@@ -34,6 +34,7 @@ neofetch
 
 
 # aliases
+alias update='paru && flatpak update'
 alias nnn='nnn -a'
 
 
