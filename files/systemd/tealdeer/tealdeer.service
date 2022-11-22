@@ -1,7 +1,7 @@
 [Unit]
 Description=updates tldr local cache
-Requires=multi-user.target
-After=multi-user.target
+Requires=network-online.target
+After=network-online.target
 
 [Service]
 ExecStart=tldr --update
