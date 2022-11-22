@@ -428,7 +428,7 @@ chmod +x /usr/local/bin/pipewire-max-volume.sh
 ######################################
 
 # configure clamav (antivirus)
-#freshclam
+cp /home/"$userName"/arch/files/systemd/clamav/freshclam.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/clamav/clamscan.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/clamav/clamscan.timer /etc/systemd/system
 sed -i "s/USERNAME/$userName/" /etc/systemd/system/clamscan.service
