@@ -1,8 +1,8 @@
 [Unit]
 Description=scans files and directories for malware via ClamAV
-Requires=clamav-freshclam.service
-After=clamav-freshclam.service
+Requires=freshclam.service
+After=freshclam.service
 
 [Service]
-ExecStartPre=rm /home/USERNAME/clamscan
-ExecStart=clamscan -ril /home/USERNAME/clamscan --exclude-dir=/\.snapshots / 2>/dev/null
+ExecStartPre=rm -rf /home/USERNAME/clamscan
+ExecStart=clamscan -ril /home/USERNAME/clamscan --exclude-dir=/.snapshots / 2>/dev/null
