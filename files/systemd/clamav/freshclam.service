@@ -1,0 +1,7 @@
+[Unit]
+Description=updates clamav virus databases
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=freshclam
