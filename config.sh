@@ -411,6 +411,11 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 # save scripts
 ##############
 
+# eject
+cp /home/"$userName"/arch/files/scripts/eject/eject.sh /usr/local/bin
+chmod +x /usr/local/bin/eject.sh
+
+
 # jackett
 cp /home/"$userName"/arch/files/scripts/jackett/autojackett.sh /usr/local/bin
 chmod +x /usr/local/bin/autojackett.sh
