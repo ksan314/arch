@@ -14,6 +14,8 @@
 - The installation comes with a few helpful scripts
 	- snaproll.sh
 		- gets user input and rolls back to a previous snapshot
+	- eject.sh
+		- unmounts and powers off any removable storage
 	- dotfiles.sh
 		- saves necessary dotfiles and pushes them to the online git repo
 		- must be run from inside the arch repo
