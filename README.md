@@ -32,6 +32,8 @@ After booting into arch linux from a live medium in UEFI mode, run the install s
 	- `station [device_name] scan`
 	- `station [device_name] get-networks`
 	- `station [device_name] conenct [network_name]`
+	- verify you are connected with...
+		- `station [device_name] show`
 3. `pacman -Sy git` 
 4. `git clone https://github.com/ksanf3/arch`
 5. `cd arch`
