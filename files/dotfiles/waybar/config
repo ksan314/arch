@@ -123,6 +123,7 @@
 			"car": "",
 			"default": ["", "", ""]
 		},
+		"max-volume": 100,
 		"on-click": "pavucontrol"
 	},
 

@@ -22,7 +22,7 @@ window#waybar {
 #workspaces {
 	padding: 0px 15px;
 	margin: 5px 0px 0px 15px;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 10px;
 	background-color: rgba(0, 0, 0, 0.9);
 }
 

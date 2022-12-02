@@ -227,10 +227,10 @@ client.placeholder        $color_unused          $color_unused          $color_u
 # Idle configuration
 ####################
 
-exec swayidle -w \
-	timeout 1800 'swaylock -f -c 000000' \
-	timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock -f -c 000000'
+#exec swayidle -w \
+#	timeout 1800 'swaylock -f -c 000000' \
+#	timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#	before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 30 minutes seconds of inactivity, then turn off
 # your displays after another 30 minutes, and turn your screens back on when

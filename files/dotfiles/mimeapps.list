@@ -48,11 +48,11 @@ video/webm=vlc.desktop
 video/3gpp2=vlc.desktop
 video/x-theora+ogg=vlc.desktop
 video/mpeg=vlc.desktop
-video/mp4=vlc.desktop
+video/mp4=mpv.desktop
 video/x-ms-wmv=vlc.desktop
 video/mp2t=vlc.desktop
 video/dv=vlc.desktop
-video/x-matroska=vlc.desktop
+video/x-matroska=mpv.desktop
 x-scheme-handler/mailto=chromium.desktop
 
 [Added Associations]
@@ -61,3 +61,4 @@ text/plain=libreoffice-writer.desktop;vim.desktop;
 application/pdf=org.pwmt.zathura.desktop;chromium.desktop;libreoffice-draw.desktop;
 text/x-systemd-unit=nvim.desktop;
 video/x-matroska=mpv.desktop;
+video/mp4=mpv.desktop;
