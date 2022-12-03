@@ -1,8 +1,9 @@
 # instructions
 ##############
 
-# install the following packages with the following commands (paru and essential packages are required)
-# if you opted to include the repo owner's custom configurations, its recommended to install everything or some things may not work as expected
+# 1) if using wifi, connect with the command "nmtui"
+# 2) install the following packages with the following commands (paru and essential packages are required)
+# 3) if you opted to include the repo owner's custom configurations, its recommended to install everything or some things may not work as expected
 
 
 
