@@ -91,7 +91,7 @@ pacman -S --needed alacritty foot mako seatd sway swaybg swaylock swayidle wayba
 # install necessary desktop packages
 printf "\e[1;32m\nInstalling necessary desktop packages\n\e[0m"
 sleep 2
-pacman -S --needed archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
+pacman -S --needed archlinux-wallpaper adwaita-qt5 adwaita-qt6 gnome-themes-extra gtk2 gtk3 gtk4 iio-sensor-proxy noto-fonts noto-fonts-emoji otf-font-awesome qt5-base qt5-wayland qt6-base qt6-wayland ttf-hack
 
 
 # install audio packages
