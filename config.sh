@@ -37,6 +37,16 @@ fi
 userName=$(users | grep -Eio '^[[:graph:]]*[^ ]')
 
 
+# # check if installing on a laptop
+laptopInstall=$(neofetch --battery_display bar | grep -io battery)
+if [ -z "$laptopInstall" ]
+then
+	laptopInstall=false
+else
+	laptopInstall=true
+fi
+
+
 # get root subvolume id
 #rootSubvolumeID=$(btrfs subvolume list / | grep -i '@$' | grep -Eio 'id [0-9]*' | grep -Eio '[0-9]*')
 
@@ -237,6 +247,14 @@ systemctl enable updatedb.timer
 
 # configure wireplumber
 su -c "systemctl --user enable wireplumber.service" "$userName"
+
+
+# fix framework laptop bug for brightness and airplane mode keys (see framework laptop page on the arch wiki)
+if [ "$laptopInstall" == true ]
+then
+	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbugfix
+	mkinitcpio -p linux
+fi
 
 
 
