@@ -252,7 +252,7 @@ su -c "systemctl --user enable wireplumber.service" "$userName"
 # fix framework laptop bug for brightness and airplane mode keys (see framework laptop page on the arch wiki)
 if [ "$laptopInstall" == true ]
 then
-	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbugfix
+	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbugfix.conf
 	mkinitcpio -p linux
 fi
 
