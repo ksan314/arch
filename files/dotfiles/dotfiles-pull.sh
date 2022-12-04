@@ -48,52 +48,52 @@ userName=$(users | grep -Eio '^[[:graph:]]*[^ ]')
 ##############################
 
 # alacritty
-su -c "cp -r files/dotfiles/alacritty /home/$userName/.config" "$userName"
+cp -r files/dotfiles/alacritty /home/"$userName"/.config
 
 
 # albert
-su -c "cp -r files/dotfiles/albert /home/$userName/.config" "$userName"
+cp -r files/dotfiles/albert /home/"$userName"/.config
 
 
 # .bashrc
-su -c "cp files/dotfiles/bashrc /home/$userName/.bashrc" "$userName"
+cp files/dotfiles/bashrc /home/"$userName"/.bashrc
 
 
 # cava
-su -c "cp -r files/dotfiles/cava /home/$userName/.config" "$userName"
+cp -r files/dotfiles/cava /home/"$userName"/.config
 
 
 # gammastep
-su -c "cp -r files/dotfiles/gammastep /home/$userName/.config" "$userName"
+cp -r files/dotfiles/gammastep /home/"$userName"/.config
 
 
 # mako
-su -c "cp -r files/dotfiles/mako /home/$userName/.config" "$userName"
+cp -r files/dotfiles/mako /home/"$userName"/.config
 
 
 # mimeapps.list
-su -c "cp files/dotfiles/mimeapps.list /home/$userName/.config" "$userName"
+cp files/dotfiles/mimeapps.list /home/"$userName"/.config
 
 
 # neofetch
-su -c "cp -r files/dotfiles/neofetch /home/$userName/.config" "$userName"
+cp -r files/dotfiles/neofetch /home/"$userName"/.config
 
 
 # .pinforc
-su -c "cp files/dotfiles/pinforc /home/$userName/.pinforc" "$userName"
+cp files/dotfiles/pinforc /home/"$userName"/.pinforc
 
 
 # sway
-su -c "cp -r files/dotfiles/sway /home/$userName/.config" "$userName"
+cp -r files/dotfiles/sway /home/"$userName"/.config
 
 
 # swaylock
-su -c "cp -r files/dotfiles/swaylock /home/$userName/.config" "$userName"
+cp -r files/dotfiles/swaylock /home/"$userName"/.config
 
 
 # waybar
-su -c "cp -r files/dotfiles/waybar /home/$userName/.config" "$userName"
+cp -r files/dotfiles/waybar /home/"$userName"/.config
 
 
 # zathura
-su -c "cp -r files/dotfiles/zathura /home/$userName/.config" "$userName"
+cp -r files/dotfiles/zathura /home/"$userName"/.config
