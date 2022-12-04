@@ -7,7 +7,7 @@
 
 
 # colored bash prompt
-export PS1="\[\e[34m\][\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[34m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[31m\]\W\[\e[m\]\[\e[34m\]]\[\e[m\]\[\e[31m\]\\$\[\e[m\] "
+export PS1="\[\e[36m\][\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[31m\]\W\[\e[m\]\[\e[36m\]]\[\e[m\]\[\e[31m\]\\$\[\e[m\] "
 
 
 # enables color
@@ -34,8 +34,8 @@ neofetch
 
 
 # aliases
-alias update='paru && flatpak update'
 alias nnn='nnn -a'
+alias update='paru && flatpak update'
 
 
 # environment variables

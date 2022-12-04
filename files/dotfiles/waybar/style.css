@@ -66,26 +66,38 @@ window#waybar {
 
 
 #battery {
-	padding: 0 10px;
-    	background-color: #ffffff;
-	color: #000000;
+	padding: 0px 15px;
+	margin: 5px 0px 0px 0px;
+	border-radius: 0px;
+    	background-color: rgba(0, 0, 0, 0.9);
+	color: #ffffff;
 }
 
 
 #battery.charging, #battery.plugged {
-	color: #ffffff;
-	background-color: #26A65B;
+	padding: 0px 15px;
+	margin: 5px 0px 0px 0px;
+	border-radius: 0px;
+    	background-color: rgba(0, 0, 0, 0.9);
+	color: #11b867;	
+}
+
+
+#battery.warning:not(.charging) {
+	padding: 0px 15px;
+	margin: 5px 0px 0px 0px;
+	border-radius: 0px;
+    	background-color: rgba(0, 0, 0, 0.9);
+	color: #dddd33;
 }
 
 
 #battery.critical:not(.charging) {
-	background-color: #f53c3c;
-	color: #ffffff;
-	animation-name: blink;
-	animation-duration: 0.5s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+	padding: 0px 15px;
+	margin: 5px 0px 0px 0px;
+	border-radius: 0px;
+    	background-color: rgba(0, 0, 0, 0.9);
+	color: #ff4444;
 }
 
 
