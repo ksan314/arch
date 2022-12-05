@@ -1,0 +1,7 @@
+[Unit]
+Description=makes computer suspend-to-ram rather than suspend-to-idle by editing the file /sys/power/mem_sleep
+Requires=multi-user.target
+After=multi-user.target
+
+[Service]
+ExecStart=echo "s2idle [deep]" > /sys/power/mem_sleep
