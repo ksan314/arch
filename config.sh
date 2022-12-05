@@ -429,6 +429,13 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 # save scripts
 ##############
 
+# display-brightness
+cp /home/"$userName"/arch/files/scripts/display-brightness/display-brightness-decrease.sh /usr/local/bin
+cp /home/"$userName"/arch/files/scripts/display-brightness/display-brightness-increase.sh /usr/local/bin
+chmod +x /usr/local/bin/display-brightness-decrease.sh
+chmod +x /usr/local/bin/display-brightness-increase.sh
+
+
 # eject
 cp /home/"$userName"/arch/files/scripts/eject/eject.sh /usr/local/bin
 chmod +x /usr/local/bin/eject.sh
