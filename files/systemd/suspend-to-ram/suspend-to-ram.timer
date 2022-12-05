@@ -1,9 +1,0 @@
-[Unit]
-Desription=makes computer suspend-to-ram rather than suspend-to-idle by editing the file /sys/power/mem_sleep
-
-[Timer]
-OnBootSec=15seconds
-AccuracySec=15seconds
-
-[Install]
-WantedBy=multi-user.target
