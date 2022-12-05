@@ -239,7 +239,7 @@ sleep 2
 printf "\e[1;32m\nInstalling packages needed for installation\n\e[0m"
 sleep 2
 
-pacman -S archlinux-keyring ca-certificates neofetch virt-what
+pacman -S archlinux-keyring btrfs-progs ca-certificates neofetch virt-what
 
 
 
