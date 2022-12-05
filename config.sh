@@ -302,69 +302,6 @@ usermod -aG libvirt "$userName"
 fi
 
 
-# configure mullvadvpn if package is installed
-mullvadExists=$(pacman -Qqs mullvad)
-if [ -z "$mullvadExists" ]
-then
-	sleep 1
-else
-	# ask user if they want to configure mullvadvpn
-	echo -e "\n\n\n"
-	while true
-	do
-	read -rp $'\n'"Would you like to configure MullvadVPN? [Y/n] " mullvadConfig
-    	mullvadConfig=${mullvadConfig:-Y}
-    	if [ "$mullvadConfig" == Y ] || [ "$mullvadConfig" == y ] || [ "$mullvadConfig" == yes ] || [ "$mullvadConfig" == YES ] || [ "$mullvadConfig" == Yes ]
-    	then
-        	mullvadConfig=true
-        	read -rp $'\n'"Are you sure you DO want to configure MullvadVPN? [Y/n] " mullvadconfigConfirm
-        	mullvadconfigConfirm=${mullvadconfigConfirm:-Y}
-        	case $mullvadconfigConfirm in
-            	[yY][eE][sS]|[yY]) break;;
-            	[nN][oO]|[nN]);;
-            	*);;
-        	esac
-			REPLY=
-		else
-        	mullvadConfig=false
-        	read -rp $'\n'"Are you sure you DO NOT want to configure MullvadVPN? [Y/n] " mullvadconfigConfirm
-        	mullvadconfigConfirm=${mullvadconfigConfirm:-Y}
-        	case $mullvadconfigConfirm in
-            	[yY][eE][sS]|[yY]) break;;
-            	[nN][oO]|[nN]);;
-            	*);;
-			esac
-        	REPLY=
-    	fi
-	done
-
-	# run or save mullvad.sh
-	if [ "$mullvadConfig" == false ]
-	then
-		# save mullvad.sh script
-		su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
-		su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
-		printf "\e[1;31m\nmullvad.sh saved to home directory\n\e[0m"
-		sleep 3
-	elif [ "$mullvadConfig" == true ]
-	then
-		# run mullvad.sh script
-		chmod +x /home/"$userName"/arch/files/scripts/mullvad/mullvad.sh
-		/home/"$userName"/arch/files/scripts/mullvad/mullvad.sh
-		
-		# if mullvad.sh unsuccessful, save mullvad.sh
-		mullvadLogin=$(mullvad account get | grep -E '[0-9]+')
-		if [ -z "$mullvadLogin" ]
-		then
-			su -c "cp /home/$userName/arch/files/scripts/mullvad/mullvad.sh /home/$userName" "$userName"
-			su -c "chmod +x /home/$userName/mullvad.sh" "$userName"
-			printf "\e[1;31m\nmullvad.sh saved to home directory\n\e[0m"
-			sleep 3
-		fi
-	fi
-fi
-
-
 
 
 
@@ -449,6 +386,13 @@ chmod +x /usr/local/bin/autojackett.sh
 # pipewire
 cp /home/"$userName"/arch/files/scripts/pipewire/pipewire-max-volume.sh /usr/local/bin
 chmod +x /usr/local/bin/pipewire-max-volume.sh
+
+
+# mullvad vpn
+cp /home/"$userName"/arch/files/scripts/vpn/vpn-connect.sh /usr/local/bin
+cp /home/"$userName"/arch/files/scripts/vpn/vpn-disconnect.sh /usr/local/bin
+chmod +x /usr/local/bin/vpn-connect.sh
+chmod +x /usr/local/bin/vpn-disconnect.sh
 
 
 
