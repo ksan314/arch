@@ -49,11 +49,6 @@
 /* non-corner modules */
 /*====================*/
 
-#battery,
-#battery.charging,
-#battery.plugged,
-#battery.warning:not(.charging),
-#battery.critical:not(.charging),
 #clock,
 #cpu,
 #memory,
@@ -73,6 +68,10 @@
 
 /* rounded modules */
 /*=================*/
+
+#battery, #battery.charging, #battery.plugged, #battery.warning:not(.charging):not(.plugged), #battery.critical:not(.charging):not(.plugged) {
+	border-radius: 10px;
+}
 
 #clock {
 	border-radius: 10px;
@@ -103,11 +102,6 @@
 /* non-rounded modules */
 /*=====================*/
 
-#battery,
-#battery.charging,
-#battery.plugged,
-#battery.warning:not(.charging):not(.plugged),
-#battery.critical:not(.charging):not(.plugged),
 #cpu,
 #memory
 
@@ -188,6 +182,11 @@
 
 /* other modules */
 /*===============*/
+
+#battery, #battery.charging, #battery.plugged, #battery.warning:not(.charging):not(.plugged), #battery.critical:not(.charging):not(.plugged) {
+	padding: 0px 10px;
+	margin: 5px 0px 0px 5px;
+}
 
 #tray {
 	padding: 0px 10px;

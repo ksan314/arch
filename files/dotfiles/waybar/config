@@ -18,9 +18,9 @@
 
 
 	// Order of modules
-	"modules-left": ["sway/workspaces", "tray"],
+	"modules-left": ["sway/workspaces", "tray", "battery"],
 	"modules-center": ["clock"],
-	"modules-right": ["battery", "pulseaudio", "memory", "cpu", "temperature"],
+	"modules-right": ["pulseaudio", "memory", "cpu", "temperature"],
 
 
 
