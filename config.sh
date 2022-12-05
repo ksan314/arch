@@ -293,11 +293,12 @@ if [ "$laptopInstall" == true ]
 then
 	# fix brightness and airplane key bug
 	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbuttonbugfix.conf
+	mkinitcpio -p linux
 	
 	# make laptop suspend-to-ram
 	echo deep > /sys/power/mem_sleep
-	#echo "mem_sleep_default=deep" > /etc/modprobe.d/suspend-to-ram.conf
-	mkinitcpio -p linux
+	sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=\"/GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep /' /etc/default/grub
+	grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
 
