@@ -299,6 +299,9 @@ then
 	echo deep > /sys/power/mem_sleep
 	sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=\"/GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep /' /etc/default/grub
 	grub-mkconfig -o /boot/grub/grub.cfg
+	
+	# allow user to change screen brightness
+	usermod -aG video "$userName"
 fi
 
 
