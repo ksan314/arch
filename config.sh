@@ -249,10 +249,14 @@ systemctl enable updatedb.timer
 su -c "systemctl --user enable wireplumber.service" "$userName"
 
 
-# fix framework laptop bug for brightness and airplane mode keys (see framework laptop page on the arch wiki)
+# fix framework laptop bug for brightness and airplane mode keys, and make laptop suspend-to-ram (see framework laptop page on the arch wiki)
 if [ "$laptopInstall" == true ]
 then
+	# fix brightness and airplane key bug
 	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbugfix.conf
+	# make laptop suspend-to-ram
+	echo deep > /sys/power/mem_sleep
+	echo "mem_sleep_default=deep" > /etc/modprobe.d/suspend-to-ram.conf
 	mkinitcpio -p linux
 fi
 
