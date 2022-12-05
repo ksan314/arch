@@ -478,13 +478,6 @@ systemctl start nnnplugins.service
 systemctl enable nnnplugins.timer
 
 
-# configure suspend-to-ram
-cp /home/"$userName"/arch/files/systemd/suspend-to-ram/suspend-to-ram.service /etc/systemd/system
-cp /home/"$userName"/arch/files/systemd/suspend-to-ram/suspend-to-ram.timer /etc/systemd/system
-systemctl daemon-reload
-systemctl enable suspend-to-ram.timer
-
-
 # configure tealdeer
 cp /home/"$userName"/arch/files/systemd/tealdeer/tealdeer.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/tealdeer/tealdeer.timer /etc/systemd/system
