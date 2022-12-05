@@ -4,4 +4,4 @@ Requires=multi-user.target
 After=multi-user.target
 
 [Service]
-ExecStart=echo "s2idle [deep]" > /sys/power/mem_sleep
+ExecStart=echo -e "s2idle \[deep\]" > /sys/power/mem_sleep
