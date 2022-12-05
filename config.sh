@@ -67,6 +67,44 @@ else
 fi
 
 
+# verify system information gathered automatically is correct
+while true
+do
+echo -e "username=$userName, laptop=$laptopInstall, swap size=$swapsizeInteger MB, custom configurations=$customConfig"
+read -rp $'\n'"Is the system information correct? [Y/n] " systemInformation
+    systemInformation=${systemInformation:-Y}
+    if [ "$systemInformation" == Y ] || [ "$systemInformation" == y ] || [ "$systemInformation" == yes ] || [ "$systemInformation" == YES ] || [ "$systemInformation" == Yes ]
+    then
+        systemInformation=true
+        read -rp $'\n'"Are you sure the system information is correct? [Y/n] " systeminformationConfirm
+        systeminformationConfirm=${systeminformationConfirm:-Y}
+        case $systeminformationConfirm in
+            [yY][eE][sS]|[yY]) break;;
+            [nN][oO]|[nN]);;
+            *);;
+        esac
+        REPLY=
+    else
+        systemInformation=false
+        read -rp $'\n'"Are you sure the system information is NOT correct? [Y/n] " systeminformationConfirm
+        systeminformationConfirm=${systeminformationConfirm:-Y}
+        case $systeminformationConfirm in
+            [yY][eE][sS]|[yY]) break;;
+            [nN][oO]|[nN]);;
+            *);;
+        esac
+        REPLY=
+    fi
+done
+
+
+# exit if system information is not correct
+if [ "$systemInformation" == false ]
+then
+    exit
+fi
+
+
 
 
 
