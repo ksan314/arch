@@ -1,5 +1,0 @@
-[Unit]
-Description=grants write permission for /sys/class/backlight/*/brightness so screen brightness can be changed
-
-[Service]
-ExecStart=chmod a+w /sys/class/backlight/*/brightness

@@ -1,9 +1,0 @@
-[Unit]
-Description=grants write permission for /sys/class/backlight/*/brightness so screen brightness can be changed
-
-[Timer]
-OnBootSec=15seconds
-AccuracySec=15seconds
-
-[Install]
-WantedBy=multi-user.target
