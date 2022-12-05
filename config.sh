@@ -449,13 +449,6 @@ chmod +x /usr/local/bin/vpn-disconnect.sh
 # save and enable custom systemd units
 ######################################
 
-# configure backlight permissions
-cp /home/"$userName"/arch/files/systemd/backlight-permission/backlight-permission.service /etc/systemd/system
-cp /home/"$userName"/arch/files/systemd/backlight-permission/backlight-permission.timer /etc/systemd/system
-systemctl daemon-reload
-systemctl enable backlight-permission.timer
-
-
 # configure clamav (antivirus)
 cp /home/"$userName"/arch/files/systemd/clamav/freshclam.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/clamav/clamscan.service /etc/systemd/system
