@@ -38,7 +38,7 @@ userName=$(users | grep -Eio '^[[:graph:]]*[^ ]')
 
 
 # # check if installing on a laptop
-laptopInstall=$(neofetch --battery_display bar | grep -io battery)
+laptopInstall=$(neofetch battery)
 if [ -z "$laptopInstall" ]
 then
 	laptopInstall=false
