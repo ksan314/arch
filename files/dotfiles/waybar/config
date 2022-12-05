@@ -18,9 +18,9 @@
 
 
 	// Order of modules
-	"modules-left": ["sway/workspaces"],
+	"modules-left": ["sway/workspaces", "tray"],
 	"modules-center": ["clock"],
-	"modules-right": ["tray", "pulseaudio", "battery", "memory", "cpu", "temperature"],
+	"modules-right": ["pulseaudio", "battery", "memory", "cpu", "temperature"],
 
 
 
@@ -110,7 +110,7 @@
 		"format-bluetooth": "{volume}% {icon} {format_source}",
 		"format-bluetooth-muted": " {icon} {format_source}",
 		"format-muted": " {format_source}",
-		"format-source": "{volume}% ",
+		"format-source": " {volume}%",
 		"format-source-muted": "",
 		"format-icons": {
 			"headphone": "",

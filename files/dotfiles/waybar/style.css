@@ -1,11 +1,19 @@
 /* default file located at /etc/xdg/waybar/style.css */
 
 
+
+
+
 /* values are in the order: top, right, bottom, left.
  * additionally, values can be combined: 10px 20px means top and bottom are 10px while right and left are 20px.
  * just 1 value means all values are the same */ 
 
 
+
+
+
+/* universal constants */
+/*=====================*/
 * {
 	/* `otf-font-awesome` is required to be installed for icons */
 	font-family: Hack, FontAwesome;
@@ -13,101 +21,221 @@
 	font-size: 18px;
 }
 
+/*=======================*/
 
-window#waybar {
-	background-color: rgba(0, 0, 0, 0.0);
-}
 
+
+
+
+/* corner modules */
+/*================*/
 
 #workspaces {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 15px;
+	padding: 0px 10px;
+	margin: 5px 0px 0px 10px;
+}
+
+#temperature, #temperature.critical {
+	padding: 0px 10px;
+	margin: 5px 10px 0px 0px;
+}
+
+/*==================*/
+
+
+
+
+
+/* non-corner modules */
+/*====================*/
+
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.warning:not(.charging),
+#battery.critical:not(.charging),
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#pulseaudio.muted
+
+{
+	padding: 0px 10px;
+	margin: 5px 0px 0px 0px;
+}
+
+/*===================*/
+
+
+
+
+
+/* rounded modules */
+/*=================*/
+
+#clock {
 	border-radius: 10px;
+}
+
+#pulseaudio, #pulseaudio.muted {
+	border-radius: 10px 0px 0px 10px;
+}
+
+#temperature, #temperature.critical {
+	border-radius: 0px 10px 10px 0px;
+}
+
+#tray {
+	border-radius: 10px;
+}
+
+#workspaces {
+	border-radius: 10px;
+}
+
+/*=================================*/
+
+
+
+
+
+/* non-rounded modules */
+/*=====================*/
+
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.warning:not(.charging):not(.plugged),
+#battery.critical:not(.charging):not(.plugged),
+#cpu,
+#memory
+
+{
+	border-radius: 0px;
+}
+
+/*======================*/
+
+
+
+
+
+/* modules with black background color */
+/*=====================================*/
+
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.warning:not(.charging),
+#battery.critical:not(.charging),
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#pulseaudio.muted,
+#temperature,
+#temperature.critical,
+#tray,
+#workspaces
+
+{
 	background-color: rgba(0, 0, 0, 0.9);
 }
 
+/*====================================*/
 
-#workspaces button {
-	padding: 0px 5px;
-	margin: 0px;
+
+
+
+
+/* modules with transparent background color */
+/*===========================================*/
+
+#waybar,
+#workspaces button,
+#workspaces button.focused,
+#workspaces button.urgent
+
+{
 	background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+/* modules colored white */
+/*=======================*/
+
+#battery,
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#pulseaudio.muted,
+#tray
+
+{
 	color: #ffffff;
 }
 
+/*========================*/
+
+
+
+
+
+/* other modules */
+/*===============*/
+
+#tray {
+	padding: 0px 10px;
+	margin: 5px 0px 0px 5px;
+}
+
+#workspaces button {
+	padding: 0px 10px;
+	margin: 0px;
+	color: #ffffff;
+}
 
 #workspaces button.focused {
-	background-color: rgba(0, 0, 0, 0);
 	color: #11b867;
 }
 
-
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-	padding: 0px 5px;
+	padding: 0px 10px;
 	margin: 0px;
 	background: rgba(0, 0, 0, 0);
 	border-color: rgba(0, 0, 0, 0);
 }
 
-
 #workspaces button.urgent {
-	background-color: rgba(0, 0, 0, 0.9);
 	color: #ff4444;
 }
 
 
-#clock {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 10px;
-	background-color: rgba(0, 0, 0, 0.9);
-	color: #ffffff;
-}
 
 
-#battery {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-    	background-color: rgba(0, 0, 0, 0.9);
-	color: #ffffff;
-}
+
 
 
 #battery.charging, #battery.plugged {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-    	background-color: rgba(0, 0, 0, 0.9);
 	color: #11b867;	
 }
 
 
-#battery.warning:not(.charging) {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-    	background-color: rgba(0, 0, 0, 0.9);
+#battery.warning:not(.charging):not(.plugged) {
 	color: #dddd33;
 }
 
 
-#battery.critical:not(.charging) {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-    	background-color: rgba(0, 0, 0, 0.9);
+#battery.critical:not(.charging):not(.plugged) {
 	color: #ff4444;
 }
 
-
-#cpu {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-    	background-color: rgba(0, 0, 0, 0.9);
-    	color: #ffffff;
-}
 
 
 #disk {
@@ -117,15 +245,6 @@ window#waybar {
 	margin-left: 5px;
 	border-radius: 10px;
 	background-color: #964B00;
-	color: #ffffff;
-}
-
-
-#memory {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 0px;
-	background-color: rgba(0, 0, 0, 0.9);
 	color: #ffffff;
 }
 
@@ -151,25 +270,6 @@ window#waybar {
 }
 
 
-#pulseaudio {
-	padding: 0px 15px;
-	margin: 5px 0px 0px 0px;
-	border-radius: 10px 0px 0px 10px;
-	background-color: rgba(0, 0, 0, 0.9);
-	color: #ffffff;
-}
-
-
-#pulseaudio.muted {
-	padding-right: 10px;
-	padding-left: 10px;
-	margin-right: 5px;
-	margin-left: 5px;
-	border-radius: 10px;
-	background-color: #999999;
-	color: #000000;
-}
-
 
 #custom-media {
     	background-color: #66cc99;
@@ -189,29 +289,12 @@ window#waybar {
 
 
 #temperature {
-	padding: 0px 15px;
-	margin: 5px 15px 0px 0px;
-	border-radius: 0px 10px 10px 0px;
-	background-color: rgba(0, 0, 0, 0.9);
 	color: #11b867;
 }
 
 
 #temperature.critical {
-	padding: 0px 15px;
-	margin: 5px 15px 0px 0px;
-	border-radius: 0px 10px 10px 0px;
-	background-color: rgba(0, 0, 0, 0.9);
 	color: #ff4444;
-}
-
-
-#tray {
-	padding: 0px 15px;
-	margin: 5px 5px 0px 0px;
-	border-radius: 10px;
-	background-color: rgba(0, 0, 0, 0.9);
-	color: #ffffff;
 }
 
 

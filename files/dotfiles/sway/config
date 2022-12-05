@@ -17,9 +17,8 @@
 #########
 
 # Displays
-set $desktopDisplay1 DP-1
-set $desktopDisplay2 HDMI-A-1
-set $laptopDisplay1 eDP-1
+set $display1 eDP-1
+set $display2 HDMI-A-1
 
 
 # Inputs
@@ -82,9 +81,8 @@ xwayland enable
 ########################
 
 # Displays
-output $desktopDisplay1 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
-output $desktopDisplay2 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
-output $laptopDisplay1 mode 2256x1504@60hz scale 1.5 scale_filter linear position 0,0
+output $display1 mode 2256x1504@60hz scale 1.5 scale_filter linear position 0,0
+output $display2 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
 
 
 # Show workspaces on display (comment out to cycle through displays)
@@ -195,11 +193,11 @@ exec_always {
 #####################
 
 # Background image
-output * bg $backgroundimage fill
+output * bg $backgroundimage stretch
 
 
 default_border pixel 10
-gaps inner 15
+gaps inner 10
 gaps outer 0
 
 
@@ -207,9 +205,7 @@ gaps outer 0
 # You can get app_id (wayland) and class (xwayland) with: swaymsg -t get_tree | grep -Ei 'app_id|class'
 for_window	[app_id="albert"]				opacity set 0.9
 for_window	[class="Bitwarden"]				opacity set 0.95
-for_window	[class="Chromium"]				opacity set 0.95
 for_window	[class="Joplin"]				opacity set 0.95
-for_window      [class="librewolf"]				opacity set 0.95
 for_window	[app_id="org.gnome.Nautilus"]			opacity set 0.9
 for_window      [app_id="pavucontrol"]				opacity set 0.95
 for_window	[app_id="org.qbittorrent.qBittorrent"]		opacity set 0.95

@@ -12,7 +12,7 @@ ignore-empty-password
 ############
 
 image=/usr/share/wallpapers/minimalriver.jpg
-scaling=fill
+scaling=stretch
 indicator-idle-visible
 
 text-color=000000ff
