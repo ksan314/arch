@@ -253,6 +253,10 @@ pacman -S archlinux-keyring ca-certificates neofetch virt-what
 # automatically get system information
 ######################################
 
+printf "\e[1;32m\nAutomatically getting system information\n\e[0m"
+sleep 2
+
+
 # get arch url
 archURL=$(grep -i 'url' /root/arch/.git/config | grep -Eo '[[:graph:]]*$')
 
