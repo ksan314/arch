@@ -3,6 +3,9 @@
 # set the protocol to wireguard
 mullvad relay set tunnel-protocol wireguard
 
+# configure obfuscation
+mullvad obfuscation set mode udp2tcp
+
 # enable LAN access
 mullvad lan set allow
     
