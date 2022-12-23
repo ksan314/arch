@@ -292,11 +292,12 @@ su -c "systemctl --user enable wireplumber.service" "$userName"
 if [ "$laptopInstall" == true ]
 then
 	# fix brightness and airplane key bug
-	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/frameworkbuttonbugfix.conf
+	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/framework-als-deactivate.conf
 	mkinitcpio -p linux
 	
 	# make laptop suspend-to-ram
 	echo deep > /sys/power/mem_sleep
+	# edit kernel parameters
 	sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=\"/GRUB_CMDLINE_LINUX_DEFAULT=\"mem_sleep_default=deep /' /etc/default/grub
 	grub-mkconfig -o /boot/grub/grub.cfg
 	
