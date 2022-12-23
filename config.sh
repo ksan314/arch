@@ -292,7 +292,7 @@ su -c "systemctl --user enable wireplumber.service" "$userName"
 if [ "$laptopInstall" == true ]
 then
 	# fix brightness and airplane key bug
-	# load proper kernel modules
+	# blacklist proper kernel modules
 	echo -e "blacklist hid_sensor_hub" > /etc/modprobe.d/framework-als-deactivate.conf
 	mkinitcpio -p linux
 	
