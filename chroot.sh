@@ -206,6 +206,9 @@ sed -i 's/,subvolid=[0-9]*//' /etc/fstab
 # configure mkinitcpio.conf
 # put btrfs into modules instead of hooks due to a bug that is documented on the arch wiki btrfs page. Also see the mkinitcpio arch wiki page for configuring mkinitcpio file
 sed -i 's/MODULES=()/MODULES=(btrfs)/' /etc/mkinitcpio.conf
+# add btrfs into binaries so that btrfs-check will work (see btrfs page on arch wiki)
+sed -i 's/BINARIES=()/BINARIES=(btrfs)/' /etc/mkinitcpio.conf
+# regenerate the intramfs
 mkinitcpio -p linux
 
 
