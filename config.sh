@@ -329,14 +329,6 @@ su -c "mkdir /home/$userName/.config" "$userName"
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 
-# configure app themes
-sed -i 's/Adwaita/Adwaita-dark/' /usr/share/gtk-2.0/gtkrc
-sed -i 's/Adwaita/Adwaita-dark/' /usr/share/gtk-3.0/settings.ini
-echo -e "gtk-application-prefer-dark-theme = true" >> /usr/share/gtk-3.0/settings.ini
-sed -i 's/Adwaita/Adwaita-dark/' /usr/share/gtk-4.0/settings.ini
-echo -e "gsettings set org.gnome.desktop.interface color-scheme prefer-dark" >> /usr/share/gtk-4.0/settings.ini
-
-
 # disable power saving mode for sound card
 #sed -i 's/load-module module-suspend-on-idle/#load-module module-suspend-on-idle/' /etc/pulse/default.pa
 
@@ -438,7 +430,14 @@ cp /home/"$userName"/arch/files/scripts/pipewire/pipewire-max-volume.sh /usr/loc
 chmod +x /usr/local/bin/pipewire-max-volume.sh
 
 
-# mullvad vpn
+# theme
+cp /home/"$userName"/arch/files/scripts/theme/dark-theme.sh /usr/local/bin
+cp /home/"$userName"/arch/files/scripts/theme/light-theme.sh /usr/local/bin
+chmod +x /usr/local/bin/dark-theme.sh
+chmod +x /usr/local/bin/light-theme.sh
+
+
+# vpn
 cp /home/"$userName"/arch/files/scripts/vpn/vpn-connect.sh /usr/local/bin
 cp /home/"$userName"/arch/files/scripts/vpn/vpn-disconnect.sh /usr/local/bin
 chmod +x /usr/local/bin/vpn-connect.sh
