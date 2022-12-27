@@ -344,6 +344,10 @@ usermod -aG libvirt "$userName"
 fi
 
 
+# add user to input group for waybar compatibility with keyboard modes
+gpasswd -a "$userName" input
+
+
 
 
 
