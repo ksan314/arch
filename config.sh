@@ -303,7 +303,7 @@ then
 	grub-mkconfig -o /boot/grub/grub.cfg
 	
 	# allow user to change screen brightness
-	usermod -aG video "$userName"
+	gpasswd -a "$userName" video
 fi
 
 
@@ -337,10 +337,10 @@ sed -i 's/#Color/Color/' /etc/pacman.conf
 libvirtExists=$(pacman -Qqs libvirt)
 if [ -z "$libvirtExists" ]
 then
-    sleep 1
+	sleep 1
 else
-systemctl enable libvirtd.service
-usermod -aG libvirt "$userName"
+	systemctl enable libvirtd.service
+	gpasswd -a "$userName" libvirt
 fi
 
 
