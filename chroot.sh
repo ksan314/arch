@@ -249,7 +249,7 @@ ln -s /var/lib/flatpak /usr/share/applications
 
 # enable sway 
 # add user to seat group
-usermod -aG seat kaleb
+gpasswd -a "$userName" seat
 # enable seatd daemon
 systemctl enable seatd.service
 
