@@ -4,5 +4,4 @@ Requires=freshclam.service
 After=freshclam.service
 
 [Service]
-ExecStartPre=rm -rf /home/USERNAME/clamscan
-ExecStart=clamscan -ril /home/USERNAME/clamscan --exclude-dir=/.snapshots / 2>/dev/null
+ExecStart=clamscan.sh
