@@ -412,8 +412,8 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 # save scripts
 ##############
 
-# clamscan
-cp /home/"$userName"/arch/files/scripts/clamscan/clamscan.sh /usr/local/bin
+# clamav
+cp /home/"$userName"/arch/files/scripts/clamav/clamscan.sh /usr/local/bin
 chmod +x /usr/local/bin/clamscan.sh
 
 
