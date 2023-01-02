@@ -412,6 +412,11 @@ su -c "cp -r /home/$userName/arch/files/dotfiles/zathura /home/$userName/.config
 # save scripts
 ##############
 
+# clamscan
+cp /home/"$userName"/arch/files/scripts/clamscan/clamscan.sh /usr/local/bin
+chmod +x /usr/local/bin/clamscan.sh
+
+
 # display-brightness
 cp /home/"$userName"/arch/files/scripts/display-brightness/display-brightness-decrease.sh /usr/local/bin
 cp /home/"$userName"/arch/files/scripts/display-brightness/display-brightness-increase.sh /usr/local/bin
@@ -458,7 +463,6 @@ chmod +x /usr/local/bin/vpn-disconnect.sh
 cp /home/"$userName"/arch/files/systemd/clamav/freshclam.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/clamav/clamscan.service /etc/systemd/system
 cp /home/"$userName"/arch/files/systemd/clamav/clamscan.timer /etc/systemd/system
-sed -i "s/USERNAME/$userName/" /etc/systemd/system/clamscan.service
 systemctl daemon-reload
 systemctl enable clamscan.timer
 
