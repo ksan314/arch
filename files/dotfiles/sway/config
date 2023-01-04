@@ -5,27 +5,62 @@
 
 
 
-####################
-# Hardware Variables
-####################
+########################
+# Hardware Configuration
+########################
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # You can get the identifiers for your inputs by running: swaymsg -t get_inputs
 
 
-# Outputs
-#########
+# Display variables
+set $display1 eDP-1
+set $display2 DP-1
+
 
 # Displays
-set $display1 eDP-1
-set $display2 HDMI-A-1
+# when setting position, the origin is at the top left corner, scaling must be considered if active when setting position
+
+# home
+output $display1 mode 2256x1504@59.999hz scale 1.5 position 0,437
+output $display2 mode 3840x2160@59.997hz scale 1.5 position 1504,0
+
+# work
+#output $display1 mode 2256x1504@59.999hz scale 1.5 position 200,1200
+#output $display2 mode --custom 1920x1200@59.950hz scale 1 position 0,0
 
 
-# Inputs
-########
+# Show workspaces on display (comment out to cycle through displays)
+#workspace 1 output $display1
+#workspace 2 output $display1
+#workspace 3 output $display1
+#workspace 4 output $display1
+#workspace 5 output $display1
+#workspace 6 output $display1
+#workspace 7 output $display1
+#workspace 8 output $display1
+#workspace 9 output $display1
+#workspace 10 output $display2
+
+
+# Focus display on launch
+exec swaymsg focus output $display1
+
 
 # Mouse
-set $mouse 1133:16500:Logitech_G305
+input type:pointer {
+	accel_profile flat
+	pointer_accel 0.5
+}
+
+
+# Touchpad
+input type:touchpad {
+	tap enabled
+	natural_scroll enabled
+	accel_profile flat
+	pointer_accel 0.3
+}
 
 
 
@@ -76,57 +111,6 @@ xwayland enable
 
 
 
-########################
-# Hardware Configuration
-########################
-
-# Displays
-output $display1 mode 2256x1504@60hz scale 1.5 scale_filter linear position 0,0
-output $display2 mode 3840x2160@60hz scale 1.5 scale_filter linear position 0,0
-
-
-# Show workspaces on display (comment out to cycle through displays)
-workspace 1 output $display1
-workspace 2 output $display1
-workspace 3 output $display1
-workspace 4 output $display1
-workspace 5 output $display1
-workspace 6 output $display1
-workspace 7 output $display1
-workspace 8 output $display1
-workspace 9 output $display1
-workspace 10 output $display2
-
-# Focus display on launch
-exec swaymsg focus output $display1
-
-
-# Mouse
-input type:pointer {
-	accel_profile flat
-	pointer_accel 0.5
-}
-#input $mouse accel_profile flat
-#input $mouse pointer_accel 0.5
-
-
-# Touchpad
-input type:touchpad {
-	tap enabled
-	natural_scroll enabled
-	accel_profile flat
-	pointer_accel 0.3
-}
-
-
-
-
-
-
-
-
-
-
 #########
 # Startup
 #########
@@ -148,10 +132,8 @@ exec mako
 
 
 # clipboard
-# this quits working after a while (see github issue for updates)
-#exec wl-paste -pw wl-copy
+# clipboard contents stored in ~/.local/share
 exec wl-paste -t text -w clipman store --max-items=1
-#exec wl-paste -pt text -w clipman store -P --histpath="~/.local/share/clipman-primary.json" --max-items=1
 # clear clipboard on startup
 exec clipman clear --all
 
@@ -166,18 +148,17 @@ bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # else
 bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-
 # brightness control
 bindsym XF86MonBrightnessUp exec display-brightness-increase.sh
 bindsym XF86MonBrightnessDown exec display-brightness-decrease.sh
 
 
 # gtk theme
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-    gsettings set $gnome-schema gtk-theme Adwaita-dark
-    gsettings set $gnome-schema color-scheme prefer-dark
-}
+#set $gnome-schema org.gnome.desktop.interface
+#exec_always {
+#    gsettings set $gnome-schema gtk-theme Adwaita-dark
+#    gsettings set $gnome-schema color-scheme prefer-dark
+#}
 
 
 
@@ -196,8 +177,8 @@ exec_always {
 output * bg $backgroundimage stretch
 
 
-default_border pixel 10
-gaps inner 10
+default_border pixel 12
+gaps inner 12
 gaps outer 0
 
 
@@ -332,7 +313,7 @@ bindsym {
     	$mod+8 workspace number 8
     	$mod+9 workspace number 9
     	$mod+0 workspace number 10
-    	
+
 
 	# Move focused container to workspace
     	$mod+Shift+1 move container to workspace number 1
@@ -354,7 +335,7 @@ bindsym {
 
     	# Switch the current container between different layout styles
     	$mod+s layout stacking
-    	$mod+w layout tabbed
+    	$mod+t layout tabbed
     	$mod+e layout toggle split
 
 

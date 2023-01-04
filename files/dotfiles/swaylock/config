@@ -1,8 +1,9 @@
 # behavior
 ##########
 
-daemonize
 ignore-empty-password
+show-failed-attempts
+daemonize
 
 
 
@@ -13,7 +14,10 @@ ignore-empty-password
 
 image=/usr/share/wallpapers/minimalriver.jpg
 scaling=stretch
-indicator-idle-visible
+#indicator-idle-visible
+#font-size=12
+#indicator-radius=50
+#indicator-thickness=10
 
 text-color=000000ff
 inside-color=00000055

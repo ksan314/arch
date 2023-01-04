@@ -18,9 +18,9 @@
 
 
 	// Order of modules
-	"modules-left": ["sway/workspaces", "tray", "battery"],
+	"modules-left": ["sway/workspaces", "tray", "sway/scratchpad", "battery"],
 	"modules-center": ["clock"],
-	"modules-right": ["pulseaudio", "memory", "cpu", "temperature"],
+	"modules-right": ["keyboard-state", "pulseaudio", "memory", "cpu", "temperature"],
 
 
 
@@ -29,48 +29,6 @@
 ///////////////////////
 // Module configuration
 ///////////////////////
-
-	"tray": {
-		// "icon-size": 21,
-		"spacing": 10
-	},
-
-
-	"clock": {
-		"interval": 1,
-		"format": "{:%a  %b-%d  %r}"
-	},
-
-
-	"cpu": {
-		"interval": 5,
-		"format": " {usage}%",
-		"tooltip": false
-	},
-
-
-	"memory": {
-		"interval": 5,
-		"format": " {}%"
-	},
-
-
-	"temperature": {
-		"interval": 5,
-		"critical-threshold": 90,
-		"format-critical": "{icon} {temperatureC}°C",
-		"format": "{icon} {temperatureC}°C",
-		"format-icons": ["", "", "", "", "", "", "", "", ""],
-		"tooltip": false
-	},
-
-
-	"backlight": {
-		// "device": "acpi_video1",
-		"format": "{percent}% {icon}",
-		"format-icons": ["", "", "", "", "", "", "", "", ""]
-	},
-
 
 	"battery": {
 		"states": {
@@ -93,14 +51,35 @@
 	},
 
 
-	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "{essid} ({signalStrength}%) ",
-		"format-ethernet": "{ipaddr}/{cidr} ",
-		"tooltip-format": "{ifname} via {gwaddr} ",
-		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	"clock": {
+		"interval": 1,
+		"format": "{:%a  %b-%d  %r}"
+	},
+
+
+	"cpu": {
+		"interval": 5,
+		"format": " {usage}%",
+		"tooltip": false
+	},
+
+
+	"keyboard-state": {
+		"capslock": true,
+		"numlock": false,
+		"scrolllock": false,
+		// "format": "{name} {icon}",
+		"format": "{icon}",
+		"format-icons": {
+		"locked": "CapsLock",
+		"unlocked": ""
+		},
+	},
+
+
+	"memory": {
+		"interval": 5,
+		"format": " {}%"
 	},
 
 
@@ -126,6 +105,55 @@
 	},
 
 
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"format-icons": ["", ""],
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
+
+
+	"temperature": {
+		"interval": 5,
+		"critical-threshold": 90,
+		"format-critical": "{icon} {temperatureC}°C",
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+		"tooltip": false
+	},
+
+
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+
+
+	"backlight": {
+		// "device": "acpi_video1",
+		"format": "{percent}% {icon}",
+		"format-icons": ["", "", "", "", "", "", "", "", ""]
+	},
+
+
+
+
+
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+
+
+
+
+
 	"custom/media": {
 		"format": "{icon} {}",
 		"return-type": "json",
@@ -138,5 +166,9 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
-}
 
+
+
+
+
+}

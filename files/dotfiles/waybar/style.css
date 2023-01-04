@@ -4,9 +4,12 @@
 
 
 
-/* values are in the order: top, right, bottom, left.
- * additionally, values can be combined: 10px 20px means top and bottom are 10px while right and left are 20px.
- * just 1 value means all values are the same */ 
+/* Values are in the order: top, right, bottom, left.
+ * Additionally, values can be combined: 10px 20px means top and bottom are 10px while right and left are 20px.
+ * Just 1 value means all values are the same */
+
+/* padding is distance between the module text and module border */
+/* margin is the distance between the other modules */
 
 
 
@@ -21,8 +24,6 @@
 	font-size: 18px;
 }
 
-/*=======================*/
-
 
 
 
@@ -30,37 +31,79 @@
 /* corner modules */
 /*================*/
 
-#workspaces {
-	padding: 0px 10px;
-	margin: 5px 0px 0px 10px;
+#temperature,
+#temperature.critical
+{
+	padding: 0px 12px;
+	margin: 4px 12px 0px 0px;
 }
 
-#temperature, #temperature.critical {
-	padding: 0px 10px;
-	margin: 5px 10px 0px 0px;
+#workspaces
+/* total padding is padding + (button padding * 2) */
+{
+	padding: 0px 4px;
+	margin: 4px 2px 0px 12px;
 }
 
-/*==================*/
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button,
+#workspaces button:hover
+{
+	padding: 0px 4px;
+	margin: 0px;
+	background: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+}
 
 
 
 
 
-/* non-corner modules */
-/*====================*/
+/* fully independent modules */
+/*===========================*/
 
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.warning:not(.charging):not(.plugged),
+#battery.critical:not(.charging):not(.plugged),
 #clock,
-#cpu,
-#memory,
+#keyboard-state > label.locked,
+#scratchpad,
+#tray
+{
+	padding: 0px 12px;
+	margin: 4px 2px 0px 2px;
+}
+
+
+
+
+
+/* partly independent modules */
+/*============================*/
+
+/* touching right */
 #pulseaudio,
 #pulseaudio.muted
-
 {
-	padding: 0px 10px;
-	margin: 5px 0px 0px 0px;
+	padding: 0px 12px;
+	margin: 4px 0px 0px 2px;
 }
 
-/*===================*/
+
+
+
+
+/* non-independent modules */
+/*=========================*/
+
+#cpu,
+#memory
+{
+	padding: 0px 12px;
+	margin: 4px 0px 0px 0px;
+}
 
 
 
@@ -69,31 +112,31 @@
 /* rounded modules */
 /*=================*/
 
-#battery, #battery.charging, #battery.plugged, #battery.warning:not(.charging):not(.plugged), #battery.critical:not(.charging):not(.plugged) {
-	border-radius: 10px;
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.warning:not(.charging):not(.plugged),
+#battery.critical:not(.charging):not(.plugged),
+#clock,
+#keyboard-state > label.locked,
+#scratchpad,
+#tray,
+#workspaces
+{
+	border-radius: 12px;
 }
 
-#clock {
-	border-radius: 10px;
+#pulseaudio,
+#pulseaudio.muted
+{
+	border-radius: 12px 0px 0px 12px;
 }
 
-#pulseaudio, #pulseaudio.muted {
-	border-radius: 10px 0px 0px 10px;
+#temperature,
+#temperature.critical
+{
+	border-radius: 0px 12px 12px 0px;
 }
-
-#temperature, #temperature.critical {
-	border-radius: 0px 10px 10px 0px;
-}
-
-#tray {
-	border-radius: 10px;
-}
-
-#workspaces {
-	border-radius: 10px;
-}
-
-/*=================================*/
 
 
 
@@ -104,12 +147,9 @@
 
 #cpu,
 #memory
-
 {
 	border-radius: 0px;
 }
-
-/*======================*/
 
 
 
@@ -125,19 +165,18 @@
 #battery.critical:not(.charging),
 #clock,
 #cpu,
+#keyboard-state > label.locked,
 #memory,
 #pulseaudio,
 #pulseaudio.muted,
+#scratchpad,
 #temperature,
 #temperature.critical,
 #tray,
 #workspaces
-
 {
 	background-color: rgba(0, 0, 0, 0.9);
 }
-
-/*====================================*/
 
 
 
@@ -150,7 +189,6 @@
 #workspaces button,
 #workspaces button.focused,
 #workspaces button.urgent
-
 {
 	background-color: rgba(0, 0, 0, 0);
 }
@@ -168,50 +206,40 @@
 #memory,
 #pulseaudio,
 #pulseaudio.muted,
-#tray
-
+#scratchpad,
+#tray,
+#workspaces button
 {
 	color: #ffffff;
 }
 
-/*========================*/
 
 
 
 
+/* modules colored green */
+/*=======================*/
 
-/* other modules */
-/*===============*/
-
-#battery, #battery.charging, #battery.plugged, #battery.warning:not(.charging):not(.plugged), #battery.critical:not(.charging):not(.plugged) {
-	padding: 0px 10px;
-	margin: 5px 0px 0px 5px;
-}
-
-#tray {
-	padding: 0px 10px;
-	margin: 5px 0px 0px 5px;
-}
-
-#workspaces button {
-	padding: 0px 10px;
-	margin: 0px;
-	color: #ffffff;
-}
-
-#workspaces button.focused {
+#battery.charging,
+#battery.plugged,
+#temperature,
+#workspaces button.focused
+{
 	color: #11b867;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-	padding: 0px 10px;
-	margin: 0px;
-	background: rgba(0, 0, 0, 0);
-	border-color: rgba(0, 0, 0, 0);
-}
 
-#workspaces button.urgent {
+
+
+
+/* modules colored red */
+/*=====================*/
+
+#battery.critical:not(.charging):not(.plugged),
+#keyboard-state > label,
+#temperature.critical,
+#workspaces button.urgent
+{
 	color: #ff4444;
 }
 
@@ -219,21 +247,18 @@
 
 
 
+/* modules colored yellow */
+/*========================*/
 
-
-#battery.charging, #battery.plugged {
-	color: #11b867;	
-}
-
-
-#battery.warning:not(.charging):not(.plugged) {
+#battery.warning:not(.charging):not(.plugged)
+{
 	color: #dddd33;
 }
 
 
-#battery.critical:not(.charging):not(.plugged) {
-	color: #ff4444;
-}
+
+
+
 
 
 
@@ -287,16 +312,6 @@
 }
 
 
-#temperature {
-	color: #11b867;
-}
-
-
-#temperature.critical {
-	color: #ff4444;
-}
-
-
 #tray > .passive {
 	-gtk-icon-effect: dim;
 }
@@ -346,23 +361,4 @@
 	padding: 0 5px;
 	margin: 0 5px;
 	min-width: 16px;
-}
-
-
-#keyboard-state {
-	background: #97e1ad;
-	color: #000000;
-	padding: 0px;
-	margin: 5px;
-	min-width: 16px;
-}
-
-
-#keyboard-state > label {
-	padding: 0 5px;
-}
-
-
-#keyboard-state > label.locked {
-	background: rgba(0, 0, 0, 0.2);
 }
