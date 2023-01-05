@@ -93,6 +93,8 @@ set $term alacritty
 # Your preferred application launcher
 set $applauncher albert show
 #set $applauncher wofi
+#set $applauncher albert toggle
+#set $applauncher albertctl toggle
 
 
 # Background image
