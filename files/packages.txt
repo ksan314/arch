@@ -76,6 +76,31 @@ paru -S --needed appimagelauncher cava cbonsai hollywood jackett joplin-desktop 
 # optional dependencies
 #######################
 
+# albert
+
+# official repo
+paru -S --needed --asdeps muparser
+
+# aur
+# none
+
+# set as dependencies (copy this whole section into terminal)
+package=albert
+dependsOn=("muparser")
+package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
+for n in "${dependsOn[@]}";
+do
+    needed=$(grep -io "$n" /var/lib/pacman/local/"$package"/desc)
+    if [ -z "$needed" ]
+    then
+        sudo sed -i "s/%DEPENDS%/%DEPENDS%\n$n/g" /var/lib/pacman/local/"$package"/desc
+    fi
+done
+
+
+
+
+
 # gedit
 
 # official repo
