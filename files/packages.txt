@@ -129,14 +129,14 @@ done
 # nautilus
 
 # official repo
-paru -S --needed --asdeps gvfs-afc gvfs-mtp
+paru -S --needed --asdeps gvfs-afc gvfs-gphoto2 gvfs-mtp
 
 # aur
 # none
 
 # set as dependencies (copy this whole section into terminal)
 package=nautilus
-dependsOn=("gvfs-afc" "gvfs-mtp")
+dependsOn=("gvfs-afc" "gvfs-gphoto2" "gvfs-mtp")
 package=$(ls /var/lib/pacman/local | grep -Ei "^$package-[0-9]")
 for n in "${dependsOn[@]}";
 do
